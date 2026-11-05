@@ -19,7 +19,7 @@
      "localidad": "Getafe",
      "viviendas": 14,
      "vendidas": 14,
-     "fase": "En obra",
+     "fase": "En obra · 29,5 %",
      "cls": "ok",
      "obra": true,
      "espera": false
@@ -29,7 +29,7 @@
      "localidad": "Rivas-Vaciamadrid",
      "viviendas": 9,
      "vendidas": 7,
-     "fase": "En obra",
+     "fase": "En obra · 3,7 %",
      "cls": "ok",
      "obra": true,
      "espera": false
