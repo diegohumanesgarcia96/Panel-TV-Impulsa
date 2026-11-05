@@ -195,6 +195,7 @@
  "colombia": [
   {
    "nombre": "Cerasus Danubio",
+   "localidad": "Bogotá · Usme",
    "viviendas": 278,
    "pe": 207,
    "ventas": 79,
@@ -204,6 +205,7 @@
   },
   {
    "nombre": "Cerasus Sexta Entrada",
+   "localidad": "Malambo · Barranquilla",
    "viviendas": 990,
    "pe": 70,
    "ventas": 31,
