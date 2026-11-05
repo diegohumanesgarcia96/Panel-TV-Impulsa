@@ -28,7 +28,7 @@
      "nombre": "Los Montecillos · Kitara",
      "localidad": "Rivas-Vaciamadrid",
      "viviendas": 9,
-     "vendidas": 6,
+     "vendidas": 7,
      "fase": "En obra",
      "cls": "ok",
      "obra": true,
@@ -68,7 +68,7 @@
      "nombre": "Valdecarros · Vescoop",
      "localidad": "Madrid · Valdecarros",
      "viviendas": 52,
-     "vendidas": 34,
+     "vendidas": 39,
      "fase": "Comercialización",
      "cls": "",
      "obra": false,
@@ -93,7 +93,7 @@
      "nombre": "Catedral · Impulsa Nova Arcosur",
      "localidad": "Zaragoza · Arcosur",
      "viviendas": 95,
-     "vendidas": 16,
+     "vendidas": 19,
      "fase": "Licencia",
      "cls": "warn",
      "obra": false,
@@ -252,6 +252,12 @@
    "tipo": "Cooperativa"
   },
   {
+   "fecha": "2026-11-12",
+   "hito": "Lotería de Navidad: fecha límite para reservar décimos",
+   "ambito": "RRHH",
+   "tipo": "Interno"
+  },
+  {
    "fecha": "2026-11-15",
    "hito": "Emisión del CFO de Rivas RU1 (retrasado un mes)",
    "ambito": "Rivas RU1",
@@ -274,6 +280,12 @@
    "hito": "Sorteo municipal de viviendas de Brunete Lote 3",
    "ambito": "Brunete Lote 3",
    "tipo": "Comercial"
+  },
+  {
+   "fecha": "2026-12-31",
+   "hito": "Vencen 2 avales de RU2 (> 300 k€ cada uno)",
+   "ambito": "RU2 · Jurídico",
+   "tipo": "Jurídico"
   },
   {
    "fecha": "2027-01-13",
