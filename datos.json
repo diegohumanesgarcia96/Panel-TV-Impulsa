@@ -1,0 +1,334 @@
+{
+ "actualizado": "2026-11-05",
+ "zonas": [
+  {
+   "zona": "Madrid",
+   "promos": [
+    {
+     "nombre": "Rivas RU1 · Impulsa Residencial",
+     "localidad": "Rivas-Vaciamadrid",
+     "viviendas": 39,
+     "vendidas": 38,
+     "fase": "En obra · 89 %",
+     "cls": "ok",
+     "obra": true,
+     "espera": false
+    },
+    {
+     "nombre": "Los Molinos I · Paradiso",
+     "localidad": "Getafe",
+     "viviendas": 14,
+     "vendidas": 14,
+     "fase": "En obra",
+     "cls": "ok",
+     "obra": true,
+     "espera": false
+    },
+    {
+     "nombre": "Los Montecillos · Kitara",
+     "localidad": "Rivas-Vaciamadrid",
+     "viviendas": 9,
+     "vendidas": 6,
+     "fase": "En obra",
+     "cls": "ok",
+     "obra": true,
+     "espera": false
+    },
+    {
+     "nombre": "Canal 65 · Laberinto (BM65)",
+     "localidad": "Madrid · Chamberí",
+     "viviendas": 7,
+     "vendidas": 1,
+     "fase": "Licencia",
+     "cls": "warn",
+     "obra": false,
+     "espera": false
+    },
+    {
+     "nombre": "Los Molinos II · Carena",
+     "localidad": "Getafe",
+     "viviendas": 12,
+     "vendidas": 7,
+     "fase": "Licencia",
+     "cls": "warn",
+     "obra": false,
+     "espera": false
+    },
+    {
+     "nombre": "Cerasus Ahijones",
+     "localidad": "Madrid · Los Ahijones",
+     "viviendas": 64,
+     "vendidas": 63,
+     "fase": "Comercialización",
+     "cls": "",
+     "obra": false,
+     "espera": false
+    },
+    {
+     "nombre": "Valdecarros · Vescoop",
+     "localidad": "Madrid · Valdecarros",
+     "viviendas": 52,
+     "vendidas": 34,
+     "fase": "Comercialización",
+     "cls": "",
+     "obra": false,
+     "espera": false
+    },
+    {
+     "nombre": "Brunete Lote 3 · Cerasus Promoción",
+     "localidad": "Brunete · SR-5",
+     "viviendas": 89,
+     "vendidas": 0,
+     "fase": "Comercialización",
+     "cls": "",
+     "obra": false,
+     "espera": false
+    }
+   ]
+  },
+  {
+   "zona": "Aragón",
+   "promos": [
+    {
+     "nombre": "Catedral · Impulsa Nova Arcosur",
+     "localidad": "Zaragoza · Arcosur",
+     "viviendas": 95,
+     "vendidas": 16,
+     "fase": "Licencia",
+     "cls": "warn",
+     "obra": false,
+     "espera": false
+    }
+   ]
+  },
+  {
+   "zona": "Cataluña",
+   "promos": [
+    {
+     "nombre": "Llevant Parc 21-22 · Fem Ciutat",
+     "localidad": "Viladecans",
+     "viviendas": 70,
+     "vendidas": 70,
+     "fase": "En obra · 72 %",
+     "cls": "ok",
+     "obra": true,
+     "espera": false
+    },
+    {
+     "nombre": "Eixample Sud · Fem Ciutat",
+     "localidad": "El Prat de Llobregat",
+     "viviendas": 45,
+     "vendidas": 0,
+     "fase": "Comercialización",
+     "cls": "",
+     "obra": false,
+     "espera": false
+    },
+    {
+     "nombre": "Cerdanyola · Millor Vallès",
+     "localidad": "Cerdanyola del Vallès",
+     "viviendas": 35,
+     "vendidas": 0,
+     "fase": "Comercialización",
+     "cls": "",
+     "obra": false,
+     "espera": false
+    },
+    {
+     "nombre": "Parc de l'Alba R.21-01 · Fem Ciutat",
+     "localidad": "Cerdanyola del Vallès",
+     "viviendas": 85,
+     "vendidas": 0,
+     "fase": "En espera",
+     "cls": "mut",
+     "obra": false,
+     "espera": true
+    },
+    {
+     "nombre": "Parc de l'Alba R.34-01 · Fem Ciutat",
+     "localidad": "Cerdanyola del Vallès",
+     "viviendas": 125,
+     "vendidas": 0,
+     "fase": "En espera",
+     "cls": "mut",
+     "obra": false,
+     "espera": true
+    }
+   ]
+  },
+  {
+   "zona": "Andalucía",
+   "promos": [
+    {
+     "nombre": "Alquería de Ugena F1",
+     "localidad": "Palomares del Río",
+     "viviendas": 18,
+     "vendidas": 18,
+     "fase": "En obra · 25 %",
+     "cls": "ok",
+     "obra": true,
+     "espera": false
+    },
+    {
+     "nombre": "Alquería de Ugena F2",
+     "localidad": "Palomares del Río",
+     "viviendas": 20,
+     "vendidas": 3,
+     "fase": "Comercialización",
+     "cls": "",
+     "obra": false,
+     "espera": false
+    },
+    {
+     "nombre": "Novo Pítamo Residencial",
+     "localidad": "Sevilla",
+     "viviendas": 37,
+     "vendidas": 28,
+     "fase": "Comercialización",
+     "cls": "",
+     "obra": false,
+     "espera": false
+    }
+   ]
+  }
+ ],
+ "colombia": [
+  {
+   "nombre": "Cerasus Danubio",
+   "viviendas": 278,
+   "pe": 207,
+   "ventas": 79,
+   "estado": "Torre 1 en obra · 100 % vendida"
+  },
+  {
+   "nombre": "Altos de Kennedy",
+   "viviendas": 232,
+   "pe": 174,
+   "ventas": 71,
+   "estado": "En pausa"
+  },
+  {
+   "nombre": "Cerasus Sexta Entrada",
+   "viviendas": 990,
+   "pe": 70,
+   "ventas": 31,
+   "estado": "Preventa 1ª fase"
+  }
+ ],
+ "hitos": [
+  {
+   "fecha": "2026-10-23",
+   "hito": "Vence el préstamo suelo Bankinter de Canal 65 (amortización desde noviembre)",
+   "ambito": "Canal 65",
+   "tipo": "Financiación"
+  },
+  {
+   "fecha": "2026-10-23",
+   "hito": "Firma renovación de cargos de Avium cooperativa",
+   "ambito": "Avium",
+   "tipo": "Cooperativa"
+  },
+  {
+   "fecha": "2026-10-30",
+   "hito": "Acta de recepción y seguro decenal Rivas RU1",
+   "ambito": "Rivas RU1",
+   "tipo": "Obra"
+  },
+  {
+   "fecha": "2026-10-30",
+   "hito": "Ibercaja aprueba la distribución hipotecaria de Rivas RU1",
+   "ambito": "Rivas RU1",
+   "tipo": "Financiación"
+  },
+  {
+   "fecha": "2026-11-03",
+   "hito": "Reunión con Sena Homes para la venta del solar de BM65 (13:00)",
+   "ambito": "Canal 65 · BM65",
+   "tipo": "Promoción"
+  },
+  {
+   "fecha": "2026-11-03",
+   "hito": "Visitas de la técnico de PRL a las oficinas de Madrid y Rivas",
+   "ambito": "RRHH",
+   "tipo": "Interno"
+  },
+  {
+   "fecha": "2026-11-06",
+   "hito": "Convocatoria de la asamblea de escisión de Cerasus Ahijones (límite)",
+   "ambito": "Ahijones",
+   "tipo": "Cooperativa"
+  },
+  {
+   "fecha": "2026-11-15",
+   "hito": "Emisión del CFO de Rivas RU1 (retrasado un mes)",
+   "ambito": "Rivas RU1",
+   "tipo": "Obra"
+  },
+  {
+   "fecha": "2026-11-23",
+   "hito": "Asamblea extraordinaria de escisión Cerasus Ahijones",
+   "ambito": "Ahijones",
+   "tipo": "Cooperativa"
+  },
+  {
+   "fecha": "2026-12-06",
+   "hito": "Inicio de visitas de cortesía Rivas RU1 (retrasado un mes)",
+   "ambito": "Rivas RU1",
+   "tipo": "Comercial"
+  },
+  {
+   "fecha": "2026-12-30",
+   "hito": "Sorteo municipal de viviendas de Brunete Lote 3",
+   "ambito": "Brunete Lote 3",
+   "tipo": "Comercial"
+  },
+  {
+   "fecha": "2027-01-13",
+   "hito": "Calificación provisional Brunete Lote 3",
+   "ambito": "Brunete Lote 3",
+   "tipo": "Urbanismo"
+  },
+  {
+   "fecha": "2027-01-31",
+   "hito": "Entrega real Rivas RU1 (enero 2027)",
+   "ambito": "Rivas RU1",
+   "tipo": "Obra"
+  },
+  {
+   "fecha": "2027-01-31",
+   "hito": "Objetivo Catedral: 50 % de ventas + licencia para el préstamo Ibercaja",
+   "ambito": "Catedral",
+   "tipo": "Financiación"
+  },
+  {
+   "fecha": "2027-01-31",
+   "hito": "1ª certificación de obra Montecillos (72.000 €)",
+   "ambito": "Montecillos",
+   "tipo": "Obra"
+  },
+  {
+   "fecha": "2027-02-03",
+   "hito": "Juicio demanda comunidad de propietarios Getafe-Hábitat",
+   "ambito": "Jurídico",
+   "tipo": "Jurídico"
+  },
+  {
+   "fecha": "2027-03-01",
+   "hito": "Plazo de financiación Brunete Lote 3, Catedral (Ibercaja) y Canal 65",
+   "ambito": "Brunete · Catedral · Canal",
+   "tipo": "Financiación"
+  },
+  {
+   "fecha": "2027-10-20",
+   "hito": "Fin del contrato de obra Torre 1 Danubio",
+   "ambito": "Danubio",
+   "tipo": "Obra"
+  },
+  {
+   "fecha": "2027-12-31",
+   "hito": "Entrega límite contractual Los Molinos I",
+   "ambito": "Molinos I",
+   "tipo": "Obra"
+  }
+ ]
+}
