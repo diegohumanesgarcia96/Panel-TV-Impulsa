@@ -198,6 +198,7 @@
    "viviendas": 278,
    "pe": 207,
    "ventas": 79,
+   "obra_viv": 68,
    "estado": "Torre 1 en obra · 100 % vendida"
   },
   {
@@ -205,6 +206,7 @@
    "viviendas": 990,
    "pe": 70,
    "ventas": 31,
+   "obra_viv": 0,
    "estado": "Preventa 1ª fase"
   }
  ],

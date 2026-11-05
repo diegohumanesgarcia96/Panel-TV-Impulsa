@@ -57,12 +57,12 @@ footer { margin-top:auto; gap:2vmin; white-space:nowrap; border-top: 1px solid v
 <div class="kpis">
 <div class="kpi"><div class="l">Viviendas grupo</div><div class="v"><span id="k-tot">—</span><small id="k-split" class="blk"></small></div></div>
 <div class="kpi"><div class="l">Vendidas · España</div><div class="v"><span id="k-vend">—</span><small id="k-pct"></small></div></div>
-<div class="kpi"><div class="l">En obra · España</div><div class="v"><span id="k-obra">—</span><small>viviendas</small></div></div>
+<div class="kpi"><div class="l">En obra · grupo</div><div class="v"><span id="k-obra">—</span><small id="k-obra-split" class="blk"></small></div></div>
 <div class="kpi"><div class="l">Promociones en curso</div><div class="v"><span id="k-prom">—</span><small id="k-col"></small></div></div>
 </div>
 <div class="zones" id="zones"></div>
 <div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div>
-<footer><span>Impulsa Proyectos Inmobiliarios, S.L. · www.impulsaproyectos.com</span><span id="foot">Vendidas y obra: España · seguimiento interno</span></footer>
+<footer><span>Impulsa Proyectos Inmobiliarios, S.L. · www.impulsaproyectos.com</span><span id="foot">Vendidas: España · seguimiento interno</span></footer>
 </div>
 <div id="msg">Cargando datos…</div>
 <button id="fs">Pantalla completa</button>
@@ -90,8 +90,8 @@ function render(d){
   d.colombia.forEach(function(p){ c+=fila(p.nombre,p.viviendas+' viv. · PE '+p.pe,p.estado,'',p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE'); });
   h+='<section><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2>'+c+'</section>';
   document.getElementById('zones').innerHTML=h;
-  var vc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=viv+' ES + '+fmtN(vc)+' CO'; document.getElementById('k-vend').textContent=vend;
-  document.getElementById('k-pct').textContent=viv?Math.round(vend/viv*100)+' %':''; document.getElementById('k-obra').textContent=obra;
+  var vc=0, oc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=viv+' ES + '+fmtN(vc)+' CO'; document.getElementById('k-vend').textContent=vend;
+  document.getElementById('k-pct').textContent=viv?Math.round(vend/viv*100)+' %':''; document.getElementById('k-obra').textContent=fmtN(obra+oc); document.getElementById('k-obra-split').textContent=obra+' ES + '+oc+' CO';
   document.getElementById('k-prom').textContent=nprom; document.getElementById('k-col').textContent='+'+d.colombia.length+' Colombia';
   document.getElementById('upd').textContent=fmt(d.actualizado);
   renderHitos(d);
@@ -107,7 +107,7 @@ function renderHitos(d){
 }
 function reloj(){ var d=new Date(); document.getElementById('hora').textContent=p2(d.getHours())+':'+p2(d.getMinutes());
   document.getElementById('fecha').textContent=DIA[d.getDay()]+' '+d.getDate()+' '+MES[d.getMonth()]+' '+d.getFullYear();
-  if(DATA && ULT){ var n=new Date(ULT.getTime()+30*60*1000); document.getElementById('foot').textContent='Vendidas y obra: España · seguimiento interno · refresco '+p2(n.getHours())+':'+p2(n.getMinutes()); } }
+  if(DATA && ULT){ var n=new Date(ULT.getTime()+30*60*1000); document.getElementById('foot').textContent='Vendidas: España · seguimiento interno · refresco '+p2(n.getHours())+':'+p2(n.getMinutes()); } }
 function carga(){
   fetch('datos.json?r='+Date.now(),{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){ DATA=d; ULT=new Date(); render(d); document.getElementById('msg').style.display='none'; reloj(); })
   .catch(function(){ if(!DATA){ document.getElementById('msg').style.display='block'; document.getElementById('msg').textContent='No se han podido cargar los datos (datos.json)'; } });
