@@ -90,8 +90,23 @@ footer { margin-top:auto; border-top: 1px solid var(--silver); padding-top: 0.66
 <div class="hitos"><h2>Próximos hitos</h2><div class="hi"><div class="hd">30 oct<span>1 d</span></div><div class="ht">Acta de recepción y seguro decenal Rivas RU1<span>Rivas RU1</span></div></div><div class="hi"><div class="hd">30 oct<span>1 d</span></div><div class="ht">Ibercaja aprueba la distribución hipotecaria de Rivas RU1<span>Rivas RU1</span></div></div><div class="hi"><div class="hd">3 nov<span>5 d</span></div><div class="ht">Reunión con Sena Homes para la venta del solar de BM65 (13:00)<span>Canal 65 · BM65</span></div></div><div class="hi"><div class="hd">3 nov<span>5 d</span></div><div class="ht">Visitas de la técnico de PRL a las oficinas de Madrid y Rivas<span>RRHH</span></div></div><div class="hi"><div class="hd">6 nov<span>8 d</span></div><div class="ht">Convocatoria de la asamblea de escisión de Cerasus Ahijones (límite)<span>Ahijones</span></div></div><div class="hi"><div class="hd">15 nov<span>17 d</span></div><div class="ht">Emisión del CFO de Rivas RU1 (retrasado un mes)<span>Rivas RU1</span></div></div></div>
 <footer><span>Impulsa Proyectos Inmobiliarios, S.L. · C/ Batalla del Salado, 25 · 28045 Madrid · www.impulsaproyectos.com</span><span>Cifras de España sin Colombia · fuente: seguimiento interno</span></footer>
 </div>
-<button id="fs" onclick="document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()">Pantalla completa</button>
-<script>setTimeout(function(){ location.reload(); }, 30*60*1000);
-document.addEventListener("keydown",function(e){ if(e.key==="f"||e.key==="F"){ document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen(); } });</script>
+<button id="fs">Pantalla completa</button>
+<script>
+// Refresco cada 30 min sin recargar la página (recargar saca del modo pantalla completa)
+setInterval(function(){
+  fetch(location.href.split('#')[0] + (location.search ? '&' : '?') + 'r=' + Date.now(), {cache:'no-store'})
+    .then(function(r){ return r.text(); })
+    .then(function(html){
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var nb = doc.body; var ob = document.body;
+      var nn = nb.querySelector('.wrap'), on = ob.querySelector('.wrap');
+      if (nn && on) { on.replaceWith(nn); } else { ob.innerHTML = nb.innerHTML; }
+    }).catch(function(){});
+}, 30*60*1000);
+function goFS(){ var el=document.documentElement; var f=el.requestFullscreen||el.webkitRequestFullscreen; if(f) f.call(el); }
+document.getElementById('fs').onclick = goFS;
+document.addEventListener("keydown",function(e){ if(e.key==="f"||e.key==="F"){ goFS(); } });
+document.addEventListener("fullscreenchange",function(){ document.getElementById('fs').style.display = document.fullscreenElement ? 'none' : ''; });
+</script>
 
 </body></html>
