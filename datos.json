@@ -199,7 +199,8 @@
    "pe": 207,
    "ventas": 79,
    "obra_viv": 68,
-   "estado": "Torre 1 en obra · 100 % vendida"
+   "obra_pct": 16,
+   "estado": "T1 en obra · 16 %"
   },
   {
    "nombre": "Cerasus Sexta Entrada",
@@ -207,6 +208,7 @@
    "pe": 70,
    "ventas": 31,
    "obra_viv": 0,
+   "obra_pct": 0,
    "estado": "Preventa 1ª fase"
   }
  ],

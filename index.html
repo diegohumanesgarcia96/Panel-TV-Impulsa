@@ -87,7 +87,7 @@ function render(d){
     h+='<section><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2>'+rows+'</section>';
   });
   var c="";
-  d.colombia.forEach(function(p){ c+=fila(p.nombre,p.viviendas+' viv. · PE '+p.pe,p.estado,'',p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE'); });
+  d.colombia.forEach(function(p){ c+=fila(p.nombre,p.viviendas+' viv. · PE '+p.pe,p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE'); });
   h+='<section><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2>'+c+'</section>';
   document.getElementById('zones').innerHTML=h;
   var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=viv+' ES + '+fmtN(vc)+' CO'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=vend+' ES + '+sc+' CO';
