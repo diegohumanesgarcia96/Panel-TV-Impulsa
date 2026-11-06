@@ -5,8 +5,8 @@
 |---|---|---|---|
 | `index.html` | vertical 9:16 | Madrid | sí |
 | `horizontal.html` | horizontal 16:9 | Madrid | sí |
-| `general.html` | vertical 9:16 | todas las sedes | no |
-| `general-horizontal.html` | horizontal 16:9 | todas las sedes | no |
+| `general.html` | vertical 9:16 | Panel TV General Impulsa (todas las sedes) | no |
+| `general-horizontal.html` | horizontal 16:9 | Panel TV General Impulsa (todas las sedes) | no |
 
 - `index.html` y `horizontal.html` son las páginas fuente. `general.html` y `general-horizontal.html` se generan con `python3 build.py` (quita los hitos y reparte las zonas); no se editan a mano.
 - `datos.json` son los datos (promociones, Colombia, hitos). Es lo único que cambia en el día a día; las 4 páginas lo leen.
