@@ -1,6 +1,6 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panel Grupo Impulsa</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="claude:viewport-fit-sides" content="cover"><!-- versión general: sin hitos -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
 <style>
 /* Panel vertical para TV 85" en 9:16 · formato Impulsa */
@@ -24,20 +24,22 @@ header img { height: 4.79vmin; width:auto; }
 .kpi .v small { font-size: 1.76vmin; color: var(--grey); font-weight:500; margin-left:0.48vmin; }
 .kpi .v small.blk { display:block; margin:0.19vmin 0 0; font-size:1.42vmin; }
 .zones { display:flex; flex-direction:column; gap: 1.1vmin; flex:1; }
-.zones section { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.zones section { display:flex; flex-direction:column; }
+.rows { flex:1; display:flex; flex-direction:column; justify-content:space-evenly; }
+.rows .pr { border-bottom:0; padding:0.2vmin 0; } .rows .pr + .pr { border-top:1px solid var(--line); }
 section { background: var(--panel); border:1px solid var(--line); border-radius: 0.81vmin; padding: 0.72vmin 1.27vmin; min-width:0; }
-section h2 { margin:0 0 0.33vmin; font-size: 1.92vmin; font-weight: 600; color: var(--car); text-transform: uppercase; letter-spacing:.06em; display:flex; justify-content:space-between; align-items:baseline; gap:0.81vmin; }
-section h2 span { color: var(--grey); text-transform:none; letter-spacing:0; font-weight:500; font-size: 1.45vmin; }
-.pr { display:grid; grid-template-columns: 1fr 15.19vmin 19.17vmin 8.79vmin; align-items:center; gap: 1.12vmin; padding: 0.34vmin 0; border-bottom: 1px solid var(--line); }
+section h2 { margin:0 0 0.5vmin; font-size: 2.2vmin; font-weight: 600; color: var(--car); text-transform: uppercase; letter-spacing:.06em; display:flex; justify-content:space-between; align-items:baseline; gap:0.81vmin; }
+section h2 span { color: var(--grey); text-transform:none; letter-spacing:0; font-weight:500; font-size: 1.6vmin; }
+.pr { display:grid; grid-template-columns: 1fr 16.5vmin 19.17vmin 9.5vmin; align-items:center; gap: 1.12vmin; padding: 0.34vmin 0; border-bottom: 1px solid var(--line); }
 .pr:last-child { border-bottom: 0; }
-.pn { font-size: 1.68vmin; font-weight: 600; line-height:1.1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.pn .pl { display:block; font-size: 1.17vmin; color: var(--grey); font-weight: 400; margin:0.40vmin 0 0; line-height:1.1; }
-.pf { font-size: 1.24vmin; line-height:1.6; color: var(--grey); border:1px solid var(--silver); border-radius: 99px; padding:0.15vmin 0.72vmin; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500; }
+.pn { font-size: 1.95vmin; font-weight: 600; line-height:1.1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pn .pl { display:block; font-size: 1.36vmin; color: var(--grey); font-weight: 400; margin:0.40vmin 0 0; line-height:1.1; }
+.pf { font-size: 1.42vmin; line-height:1.6; color: var(--grey); border:1px solid var(--silver); border-radius: 99px; padding:0.15vmin 0.72vmin; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500; }
 .pf.ok { color: var(--ok); border-color: var(--ok); } .pf.warn { color: var(--car); border-color: var(--car); } .pf.bad { color: var(--bad); border-color: var(--bad); } .pf.mut { color: var(--silver); }
-.pb { height: 0.87vmin; border-radius: 0.81vmin; background: var(--line); overflow:hidden; }
+.pb { height: 1vmin; border-radius: 0.81vmin; background: var(--line); overflow:hidden; }
 .pb i { display:block; height:100%; background: var(--car); }
-.pv { font-size: 1.68vmin; font-weight: 700; text-align:right; }
-.pv span { color: var(--grey); font-weight: 500; font-size: 1.27vmin; }
+.pv { font-size: 1.95vmin; font-weight: 700; text-align:right; }
+.pv span { color: var(--grey); font-weight: 500; font-size: 1.45vmin; }
 .hitos { background: var(--panel); border:1px solid var(--line); border-radius: 0.81vmin; padding: 0.96vmin 1.27vmin; }
 .hitos h2 { margin:0 0 0.48vmin; font-size: 1.92vmin; font-weight:600; color: var(--car); text-transform:uppercase; letter-spacing:.06em; }
 .hi { display:grid; grid-template-columns: 9.59vmin 1fr; gap: 1.12vmin; align-items:center; padding: 0.37vmin 0; border-bottom:1px solid var(--line); }
@@ -63,7 +65,6 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 <div class="kpi"><div class="l">Promociones actuales</div><div class="v"><span id="k-prom">—</span><small id="k-col" class="blk"></small></div></div>
 </div>
 <div class="zones" id="zones"></div>
-<div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div>
 <footer><span>Impulsa Proyectos Inmobiliarios, S.L. · www.impulsaproyectos.com</span><span id="foot">Datos a <span id="upd">—</span> · seguimiento interno</span></footer>
 </div>
 <div id="msg">Cargando datos…</div>
@@ -86,11 +87,11 @@ function render(d){
     var tv=0,ts=0,rows="";
     z.promos.forEach(function(p){ tv+=p.viviendas; ts+=p.vendidas; viv+=p.viviendas; vend+=p.vendidas; if(p.obra) obra+=p.viviendas; if(!p.espera) nprom++;
       rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas); });
-    h+='<section><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2>'+rows+'</section>';
+    h+='<section style="flex:'+(z.promos.length+1.3)+'"><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2><div class="rows">'+rows+'</div></section>';
   });
   var c="";
   d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv. · PE '+p.pe,p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE'); });
-  h+='<section><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2>'+c+'</section>';
+  h+='<section style="flex:'+(d.colombia.length+1.3)+'"><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2><div class="rows">'+c+'</div></section>';
   document.getElementById('zones').innerHTML=h;
   var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=viv+' ESP + '+fmtN(vc)+' COL'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=vend+' ESP + '+sc+' COL';
   document.getElementById('k-pct').textContent=(viv+vc)?Math.round((vend+sc)/(viv+vc)*100)+' %':''; document.getElementById('k-obra').textContent=fmtN(obra+oc); document.getElementById('k-obra-split').textContent=obra+' ESP + '+oc+' COL';
@@ -106,7 +107,7 @@ function renderHitos(d){
   prox.forEach(function(r){ var cls=r.dias===0?'hoy':(r.dias===1?'manana':''); var lab=r.dias<0?'hecho':(r.dias===0?'hoy':(r.dias===1?'mañana':r.dias+' d'));
     out+='<div class="hi '+cls+'"><div class="hd">'+r.f.getDate()+' '+MES[r.f.getMonth()]+'<span>'+lab+'</span></div><div class="ht">'+esc(r.x.hito)+'<span>'+esc(r.x.ambito)+'</span></div></div>'; });
   if(hechos.length){ out+='<div class="hechos">Hecho esta semana: '+hechos.map(function(r){ return esc(r.x.ambito)+' · '+r.f.getDate()+' '+MES[r.f.getMonth()]; }).join('  ·  ')+'</div>'; }
-  document.getElementById('hitos').innerHTML=out||'<div class="hi"><div class="ht">Sin hitos próximos</div></div>';
+  var _h=document.getElementById('hitos'); if(_h) _h.innerHTML=out||'<div class="hi"><div class="ht">Sin hitos próximos</div></div>';
 }
 function reloj(){ var d=new Date(); document.getElementById('hora').textContent=p2(d.getHours())+':'+p2(d.getMinutes());
   document.getElementById('fecha').textContent=DIA[d.getDay()]+' '+d.getDate()+' '+MES[d.getMonth()]+' '+d.getFullYear();

@@ -23,22 +23,26 @@ header img { height: 5.6vh; width:auto; }
 .kpi .v { font-size: 4.6vh; font-weight: 700; line-height:1.05; text-align:right; }
 .kpi .v small { font-size: 2vh; color: var(--grey); font-weight:500; margin-left:0.6vh; }
 .kpi .v small.blk { display:block; margin:0.2vh 0 0; font-size:1.6vh; }
-.main { flex:1; min-height:0; display:grid; grid-template-columns: 1fr 1fr 0.6fr; gap: 1.4vh; align-items:stretch; }
+.main { flex:1; min-height:0; display:grid; grid-template-columns: 1fr 1fr 0.55fr; gap: 1.4vh; align-items:stretch; }
 .zones { display:contents; }
 section { background: var(--panel); border:1px solid var(--line); border-radius: 1vh; padding: 1vh 1.6vh; min-width:0; }
 section h2 { margin:0 0 0.5vh; font-size: 2.1vh; font-weight: 600; color: var(--car); text-transform: uppercase; letter-spacing:.06em; display:flex; justify-content:space-between; align-items:baseline; gap:1vh; }
 section h2 span { color: var(--grey); text-transform:none; letter-spacing:0; font-weight:500; font-size: 1.55vh; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .col { display:flex; flex-direction:column; gap:1.4vh; min-height:0; }
-.col section { display:flex; flex-direction:column; justify-content:center; }
-.pr { display:grid; grid-template-columns: 1fr 13.6vh 9vh 7.5vh; align-items:center; gap: 1.4vh; padding: 0.55vh 0; border-bottom: 1px solid var(--line); }
+.col section { display:flex; flex-direction:column; }
+.rows { flex:1; display:flex; flex-direction:column; justify-content:space-evenly; }
+.rows .pr { border-bottom:0; padding:0; }
+.rows .pr + .pr { border-top:1px solid var(--line); padding-top:0.7vh; } .rows .pr { padding-bottom:0.7vh; } .rows .pr:last-child { padding-bottom:0; }
+.pr { display:grid; grid-template-columns: 1fr 13.2vh 7vh 8.8vh; align-items:center; gap: 1.2vh; padding: 0.55vh 0; border-bottom: 1px solid var(--line); }
 .pr:last-child { border-bottom: 0; }
-.pn { font-size: 1.8vh; font-weight: 600; line-height:1.1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pn { font-size: 1.62vh; font-weight: 600; line-height:1.1; min-width:0; overflow:hidden; }
+.pn .pt { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .pn .pl { display:block; font-size: 1.35vh; color: var(--grey); font-weight: 400; margin:0.45vh 0 0; line-height:1.1; }
-.pf { font-size: 1.3vh; color: var(--grey); border:1px solid var(--silver); border-radius: 99px; padding:0.2vh 0.9vh; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500; }
+.pf { font-size: 1.2vh; line-height:1.6; color: var(--grey); border:1px solid var(--silver); border-radius: 99px; padding:0.2vh 0.6vh; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500; }
 .pf.ok { color: var(--ok); border-color: var(--ok); } .pf.warn { color: var(--car); border-color: var(--car); } .pf.bad { color: var(--bad); border-color: var(--bad); } .pf.mut { color: var(--silver); }
 .pb { height: 1vh; border-radius: 1vh; background: var(--line); overflow:hidden; }
 .pb i { display:block; height:100%; background: var(--car); }
-.pv { font-size: 1.9vh; font-weight: 700; text-align:right; }
+.pv { font-size: 1.9vh; font-weight: 700; text-align:right; white-space:nowrap; }
 .pv span { color: var(--grey); font-weight: 500; font-size: 1.4vh; }
 .hitos { background: var(--panel); border:1px solid var(--line); border-radius: 1vh; padding: 1vh 1.6vh; display:flex; flex-direction:column; min-height:0; }
 .hitos h2 { margin:0 0 0.6vh; font-size: 2.1vh; font-weight:600; color: var(--car); text-transform:uppercase; letter-spacing:.06em; }
@@ -47,13 +51,13 @@ section h2 span { color: var(--grey); text-transform:none; letter-spacing:0; fon
 .hi:last-child { border-bottom:0; }
 .hd { font-size: 2.1vh; font-weight: 700; } .hd span { display:block; font-size: 1.4vh; color: var(--car); font-weight: 600; }
 .hi.hoy .hd span { color: var(--bad); }
-.hechos { margin-top:0.8vh; font-size:1.3vh; color: var(--silver); }
+.hechos { margin-top:0.8vh; font-size:1.3vh; color: var(--grey); }
 .hi.hoy .hd, .hi.manana .hd { color: var(--car); } .hi.hoy .hd span, .hi.manana .hd span { font-size:1.55vh; }
 .ht { font-size: 1.75vh; line-height:1.2; } .ht span { display:block; font-size: 1.35vh; color: var(--grey); }
-footer { margin-top:auto; gap:2vh; white-space:nowrap; border-top: 1px solid var(--silver); padding-top: 0.8vh; padding-right:40px; display:flex; justify-content:space-between; font-size: 1.4vh; color: var(--grey); }
+footer { margin-top:auto; gap:2vh; white-space:nowrap; border-top: 1px solid var(--silver); padding-top: 0.8vh; padding-right:56px; display:flex; justify-content:space-between; font-size: 1.4vh; color: var(--grey); }
 #msg { display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); color:var(--grey); font-size:3vh; }
 @media (max-aspect-ratio: 1/1) { body { overflow:auto; } .wrap { height:auto; } .main { grid-template-columns: 1fr; } .zones { display:flex; flex-direction:column; gap:1.4vh; } }
-#fs{position:fixed;right:14px;bottom:14px;z-index:9;background:var(--panel);color:var(--grey);border:1px solid var(--grey);border-radius:8px;width:34px;height:34px;font:400 18px/32px Poppins,sans-serif;cursor:pointer;opacity:.9}#fs:hover{color:var(--car);border-color:var(--car);opacity:1}
+#fs{position:fixed;right:14px;bottom:12px;z-index:9;background:var(--panel);color:var(--grey);border:1px solid var(--grey);border-radius:8px;width:34px;height:34px;font:400 18px/32px Poppins,sans-serif;cursor:pointer;opacity:.9}#fs:hover{color:var(--car);border-color:var(--car);opacity:1}
 :fullscreen #fs,:-webkit-full-screen #fs{display:none}
 </style></head><body>
 <div class="wrap">
@@ -81,7 +85,7 @@ function p2(n){ return (n<10?"0":"")+n; }
 function hoy(){ var d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d.getDate()); }
 function fmt(iso){ var p=iso.split("-"); return p[2]+"/"+p[1]+"/"+p[0]; }
 function fila(nombre,loc,fase,cls,pct,s,v){
-  return '<div class="pr"><div class="pn">'+esc(nombre)+'<span class="pl">'+esc(loc)+'</span></div><div class="pf '+cls+'">'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.round(pct)+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
+  return '<div class="pr"><div class="pn"><span class="pt">'+esc(nombre)+'</span><span class="pl">'+esc(loc)+'</span></div><div class="pf '+cls+'">'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.round(pct)+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
 }
 function render(d){
   var viv=0,vend=0,obra=0,nprom=0,h="",secs=[];
@@ -89,11 +93,11 @@ function render(d){
     var tv=0,ts=0,rows="";
     z.promos.forEach(function(p){ tv+=p.viviendas; ts+=p.vendidas; viv+=p.viviendas; vend+=p.vendidas; if(p.obra) obra+=p.viviendas; if(!p.espera) nprom++;
       rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas); });
-    secs.push({n:z.promos.length+1.2,h:'<section style="flex:'+(z.promos.length+1.2)+'"><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2>'+rows+'</section>'});
+    secs.push({n:z.promos.length+1.2,h:'<section style="flex:'+(z.promos.length+1.2)+'"><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2><div class="rows">'+rows+'</div></section>'});
   });
   var c="";
   d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv. · PE '+p.pe,p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE'); });
-  secs.push({n:d.colombia.length+1.2,h:'<section style="flex:'+(d.colombia.length+1.2)+'"><h2>Colombia<span>Hábitat Colombia · ventas sobre PE</span></h2>'+c+'</section>'});
+  secs.push({n:d.colombia.length+1.2,h:'<section style="flex:'+(d.colombia.length+1.2)+'"><h2>Colombia<span>Hábitat Colombia · ventas sobre PE</span></h2><div class="rows">'+c+'</div></section>'});
   var tot=0; secs.forEach(function(s){tot+=s.n;}); var a="",b="",acc=0;
   secs.forEach(function(s){ if(acc<tot/2 && (acc+s.n<=tot/2+1.5 || !a)){ a+=s.h; acc+=s.n; } else b+=s.h; });
   document.getElementById('colA').innerHTML=a; document.getElementById('colB').innerHTML=b;
