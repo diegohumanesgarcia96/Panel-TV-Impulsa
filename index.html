@@ -92,9 +92,9 @@ function render(d){
   d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv. · PE '+p.pe,p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE'); });
   h+='<section><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2>'+c+'</section>';
   document.getElementById('zones').innerHTML=h;
-  var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=viv+' ES + '+fmtN(vc)+' CO'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=vend+' ES + '+sc+' CO';
-  document.getElementById('k-pct').textContent=(viv+vc)?Math.round((vend+sc)/(viv+vc)*100)+' %':''; document.getElementById('k-obra').textContent=fmtN(obra+oc); document.getElementById('k-obra-split').textContent=obra+' ES + '+oc+' CO';
-  document.getElementById('k-prom').textContent=nprom+d.colombia.length; document.getElementById('k-col').textContent=nprom+' ES + '+d.colombia.length+' CO';
+  var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=viv+' ESP + '+fmtN(vc)+' COL'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=vend+' ESP + '+sc+' COL';
+  document.getElementById('k-pct').textContent=(viv+vc)?Math.round((vend+sc)/(viv+vc)*100)+' %':''; document.getElementById('k-obra').textContent=fmtN(obra+oc); document.getElementById('k-obra-split').textContent=obra+' ESP + '+oc+' COL';
+  document.getElementById('k-prom').textContent=nprom+d.colombia.length; document.getElementById('k-col').textContent=nprom+' ESP + '+d.colombia.length+' COL';
   var u=document.getElementById('upd'); if(u) u.textContent=fmt(d.actualizado);
   renderHitos(d);
 }
