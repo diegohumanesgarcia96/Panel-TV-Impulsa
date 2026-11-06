@@ -23,18 +23,18 @@ header img { height: 5.6vh; width:auto; }
 .kpi .v { font-size: 4.6vh; font-weight: 700; line-height:1.05; text-align:right; }
 .kpi .v small { font-size: 2vh; color: var(--grey); font-weight:500; margin-left:0.6vh; }
 .kpi .v small.blk { display:block; margin:0.2vh 0 0; font-size:1.6vh; }
-.main { flex:1; min-height:0; display:grid; grid-template-columns: 1fr 1fr 0.72fr; gap: 1.4vh; align-items:stretch; }
+.main { flex:1; min-height:0; display:grid; grid-template-columns: 1fr 1fr 0.6fr; gap: 1.4vh; align-items:stretch; }
 .zones { display:contents; }
 section { background: var(--panel); border:1px solid var(--line); border-radius: 1vh; padding: 1vh 1.6vh; min-width:0; }
 section h2 { margin:0 0 0.5vh; font-size: 2.1vh; font-weight: 600; color: var(--car); text-transform: uppercase; letter-spacing:.06em; display:flex; justify-content:space-between; align-items:baseline; gap:1vh; }
 section h2 span { color: var(--grey); text-transform:none; letter-spacing:0; font-weight:500; font-size: 1.55vh; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .col { display:flex; flex-direction:column; gap:1.4vh; min-height:0; }
-.col section { flex:1; display:flex; flex-direction:column; justify-content:center; }
-.pr { display:grid; grid-template-columns: 1fr 15vh 16vh 8.5vh; align-items:center; gap: 1.4vh; padding: 0.55vh 0; border-bottom: 1px solid var(--line); }
+.col section { display:flex; flex-direction:column; justify-content:center; }
+.pr { display:grid; grid-template-columns: 1fr 13.6vh 9vh 7.5vh; align-items:center; gap: 1.4vh; padding: 0.55vh 0; border-bottom: 1px solid var(--line); }
 .pr:last-child { border-bottom: 0; }
-.pn { font-size: 1.9vh; font-weight: 600; line-height:1.1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.pn { font-size: 1.8vh; font-weight: 600; line-height:1.1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .pn .pl { display:block; font-size: 1.35vh; color: var(--grey); font-weight: 400; margin:0.45vh 0 0; line-height:1.1; }
-.pf { font-size: 1.4vh; color: var(--grey); border:1px solid var(--silver); border-radius: 99px; padding:0.2vh 0.9vh; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500; }
+.pf { font-size: 1.3vh; color: var(--grey); border:1px solid var(--silver); border-radius: 99px; padding:0.2vh 0.9vh; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:500; }
 .pf.ok { color: var(--ok); border-color: var(--ok); } .pf.warn { color: var(--car); border-color: var(--car); } .pf.bad { color: var(--bad); border-color: var(--bad); } .pf.mut { color: var(--silver); }
 .pb { height: 1vh; border-radius: 1vh; background: var(--line); overflow:hidden; }
 .pb i { display:block; height:100%; background: var(--car); }
@@ -89,11 +89,11 @@ function render(d){
     var tv=0,ts=0,rows="";
     z.promos.forEach(function(p){ tv+=p.viviendas; ts+=p.vendidas; viv+=p.viviendas; vend+=p.vendidas; if(p.obra) obra+=p.viviendas; if(!p.espera) nprom++;
       rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas); });
-    secs.push({n:z.promos.length+1.2,h:'<section><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2>'+rows+'</section>'});
+    secs.push({n:z.promos.length+1.2,h:'<section style="flex:'+(z.promos.length+1.2)+'"><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2>'+rows+'</section>'});
   });
   var c="";
   d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv. · PE '+p.pe,p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE'); });
-  secs.push({n:d.colombia.length+1.2,h:'<section><h2>Colombia<span>Hábitat Colombia · ventas sobre PE</span></h2>'+c+'</section>'});
+  secs.push({n:d.colombia.length+1.2,h:'<section style="flex:'+(d.colombia.length+1.2)+'"><h2>Colombia<span>Hábitat Colombia · ventas sobre PE</span></h2>'+c+'</section>'});
   var tot=0; secs.forEach(function(s){tot+=s.n;}); var a="",b="",acc=0;
   secs.forEach(function(s){ if(acc<tot/2 && (acc+s.n<=tot/2+1.5 || !a)){ a+=s.h; acc+=s.n; } else b+=s.h; });
   document.getElementById('colA').innerHTML=a; document.getElementById('colB').innerHTML=b;
