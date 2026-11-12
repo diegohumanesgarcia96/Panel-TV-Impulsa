@@ -14,3 +14,6 @@
 - Las TV leen `datos.json` cada 30 minutos sin recargar la página (no salen de pantalla completa) y calculan las cuentas atrás de los hitos con la fecha real: los hitos pasados se marcan "hecho" durante 3 días y después desaparecen.
 - Pantalla completa: botón ⛶ abajo a la derecha o tecla F.
 - Cambios de diseño: primero en `prueba*.html` para verlos en la TV; con el ok de Diego se pasan a las páginas fuente y se ejecuta `build.py`.
+
+## Versión Excel (formato Impulsa)
+- `python3 panel_excel.py <Plantilla_Impulsa.xlsx> <salida.xlsx>` genera el mismo panel en Excel (Portada · Panel · Hitos) a partir de `datos.json`. Se regenera con cada actualización de datos si Diego lo pide.
