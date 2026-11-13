@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-05",
+ "actualizado": "2026-11-12",
  "zonas": [
   {
    "zona": "Madrid",
@@ -68,7 +68,7 @@
      "nombre": "Valdecarros · Vescoop",
      "localidad": "Madrid · Valdecarros",
      "viviendas": 52,
-     "vendidas": 39,
+     "vendidas": 40,
      "fase": "Comercialización",
      "cls": "",
      "obra": false,
@@ -93,7 +93,7 @@
      "nombre": "Catedral · Impulsa Nova Arcosur",
      "localidad": "Zaragoza · Arcosur",
      "viviendas": 95,
-     "vendidas": 19,
+     "vendidas": 22,
      "fase": "Licencia",
      "cls": "warn",
      "obra": false,
@@ -264,10 +264,28 @@
    "tipo": "Interno"
   },
   {
-   "fecha": "2026-11-15",
-   "hito": "Emisión del CFO de Rivas RU1 (retrasado un mes)",
-   "ambito": "Rivas RU1",
+   "fecha": "2026-11-12",
+   "hito": "Firma en notaría del pago a Ameba y Bambú (Valdecarros)",
+   "ambito": "Valdecarros",
+   "tipo": "Financiación"
+  },
+  {
+   "fecha": "2026-11-16",
+   "hito": "Inicio de los trabajos de reparación en NB43 Mayta (1 mes)",
+   "ambito": "NB43",
    "tipo": "Obra"
+  },
+  {
+   "fecha": "2026-11-17",
+   "hito": "Reunión con el Ayto. de Brunete para coordinar las adjudicaciones",
+   "ambito": "Brunete Lote 3",
+   "tipo": "Urbanismo"
+  },
+  {
+   "fecha": "2026-11-17",
+   "hito": "Reunión con los técnicos municipales de Getafe por la licencia de Los Molinos II",
+   "ambito": "Molinos II",
+   "tipo": "Urbanismo"
   },
   {
    "fecha": "2026-11-23",
@@ -276,8 +294,14 @@
    "tipo": "Cooperativa"
   },
   {
-   "fecha": "2026-12-06",
-   "hito": "Inicio de visitas de cortesía Rivas RU1 (retrasado un mes)",
+   "fecha": "2026-11-23",
+   "hito": "Emisión del CFO de Rivas RU1 (retrasado)",
+   "ambito": "Rivas RU1",
+   "tipo": "Obra"
+  },
+  {
+   "fecha": "2026-12-14",
+   "hito": "Inicio de visitas de cortesía Rivas RU1",
    "ambito": "Rivas RU1",
    "tipo": "Comercial"
   },
