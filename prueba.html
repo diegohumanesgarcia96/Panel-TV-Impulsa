@@ -61,6 +61,15 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 .pn .pl, .ht { text-wrap: balance; }
 .pf.mut { color: #A09F9C; border-color: var(--silver); }
 .rows .pr { flex:1; }
+/* novedades y 100 % vendido (prueba 19/11) */
+.pr { grid-template-columns: 1fr 15.19vmin 16.4vmin 11.6vmin; }
+.pb.full i { background: var(--ok); }
+.pv { display:flex; justify-content:flex-end; align-items:baseline; white-space:nowrap; }
+.pv .ck { width:0.82em; height:0.82em; margin-right:0.35em; fill: var(--ok); align-self:center; flex:none; }
+.pv .dl { font-style:normal; font-weight:600; font-size:0.72em; margin-right:0.6em; display:inline-flex; align-items:center; gap:0.25em; align-self:center; }
+.pv .dl i { width:0; height:0; border-left:0.34em solid transparent; border-right:0.34em solid transparent; }
+.pv .dl.up { color: var(--ok); } .pv .dl.up i { border-bottom:0.52em solid var(--ok); }
+.pv .dl.down { color: var(--grey); } .pv .dl.down i { border-top:0.52em solid var(--grey); }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -86,19 +95,21 @@ function fmtN(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
 function p2(n){ return (n<10?"0":"")+n; }
 function hoy(){ var d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d.getDate()); }
 function fmt(iso){ var p=iso.split("-"); return p[2]+"/"+p[1]+"/"+p[0]; }
-function fila(nombre,loc,fase,cls,pct,s,v){
-  return '<div class="pr"><div class="pn">'+esc(nombre)+'<span class="pl">'+esc(loc)+'</span></div><div class="pf '+cls+'">'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.round(pct)+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
+var CK='<svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8"/><path d="M4.4 8.3l2.4 2.4 4.8-5" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function delta(p){ if(!p.delta||!p.delta_fecha) return ''; var a=p.delta_fecha.split('-'); var dias=Math.round((hoy()-new Date(+a[0],+a[1]-1,+a[2]))/864e5); if(dias<0||dias>7) return ''; return '<em class="dl '+(p.delta>0?'up':'down')+'"><i></i>'+Math.abs(p.delta)+'</em>'; }
+function fila(nombre,loc,fase,cls,pct,s,v,extra,full){
+  return '<div class="pr"><div class="pn">'+esc(nombre)+'<span class="pl">'+esc(loc)+'</span></div><div class="pf '+cls+'">'+esc(fase)+'</div><div class="pb'+(full?' full':'')+'"><i style="width:'+Math.round(pct)+'%"></i></div><div class="pv">'+(extra||'')+(full?CK:'')+s+'<span>/'+v+'</span></div></div>';
 }
 function render(d){
   var viv=0,vend=0,obra=0,nprom=0,h="";
   d.zonas.forEach(function(z){
     var tv=0,ts=0,rows="";
     z.promos.forEach(function(p){ tv+=p.viviendas; ts+=p.vendidas; viv+=p.viviendas; vend+=p.vendidas; if(p.obra) obra+=p.viviendas; if(!p.espera) nprom++;
-      rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas); });
+      rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas,delta(p),p.viviendas>0&&p.vendidas>=p.viviendas); });
     h+='<section><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2>'+rows+'</section>';
   });
   var c="";
-  d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv.',p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE'); });
+  d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv.',p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE',delta(p),false); });
   h+='<section><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2>'+c+'</section>';
   document.getElementById('zones').innerHTML=h;
   var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=viv+' ESP + '+fmtN(vc)+' COL'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=vend+' ESP + '+sc+' COL';

@@ -122,7 +122,9 @@
      "fase": "Comercialización",
      "cls": "",
      "obra": false,
-     "espera": false
+     "espera": false,
+     "delta": 25,
+     "delta_fecha": "2026-11-19"
     },
     {
      "nombre": "Cerdanyola · Millor Vallès",
@@ -201,7 +203,9 @@
    "ventas": 75,
    "obra_viv": 68,
    "obra_pct": 16,
-   "estado": "T1 en obra · 16 %"
+   "estado": "T1 en obra · 16 %",
+   "delta": -4,
+   "delta_fecha": "2026-11-19"
   },
   {
    "nombre": "Cerasus Sexta Entrada",

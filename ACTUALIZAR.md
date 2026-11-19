@@ -17,3 +17,10 @@
 
 ## Versión Excel (formato Impulsa)
 - `python3 panel_excel.py <Plantilla_Impulsa.xlsx> <salida.xlsx>` genera el mismo panel en Excel (Portada · Panel · Hitos) a partir de `datos.json`. Se regenera con cada actualización de datos si Diego lo pide.
+
+## Novedades de la semana y 100 % vendido (en prueba desde 19/11/2026)
+
+- Cada promoción de `datos.json` admite dos campos opcionales: `delta` (variación de ventas respecto al dato anterior, positivo o negativo) y `delta_fecha` (AAAA-MM-DD del cambio). La flecha se muestra sola durante 7 días y desaparece.
+- Al actualizar ventas: poner `delta` = dato nuevo − dato anterior y `delta_fecha` = fecha de hoy.
+- El distintivo verde de 100 % vendido es automático (vendidas = viviendas); no requiere ningún campo.
+- De momento solo lo pintan las páginas `prueba*.html`.
