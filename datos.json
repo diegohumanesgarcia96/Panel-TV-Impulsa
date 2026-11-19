@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-12",
+ "actualizado": "2026-11-19",
  "zonas": [
   {
    "zona": "Madrid",
@@ -109,7 +109,7 @@
      "localidad": "Viladecans",
      "viviendas": 70,
      "vendidas": 70,
-     "fase": "En obra · 72 %",
+     "fase": "En obra · 90 %",
      "cls": "ok",
      "obra": true,
      "espera": false
@@ -118,7 +118,7 @@
      "nombre": "Eixample Sud · Fem Ciutat",
      "localidad": "El Prat de Llobregat",
      "viviendas": 45,
-     "vendidas": 0,
+     "vendidas": 25,
      "fase": "Comercialización",
      "cls": "",
      "obra": false,
