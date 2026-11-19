@@ -68,6 +68,8 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 .pv .ck { width:0.82em; height:0.82em; margin-right:0.35em; fill: var(--ok); align-self:center; flex:none; }
 /* móvil: fase sin cortar y botón sin tapar cifras */
 @media (max-width: 700px) { .pr { grid-template-columns: 1fr 20.6vmin 9.8vmin 11.19vmin; } .pf { padding-left:0.6vmin; padding-right:0.6vmin; } #fs { display:none; } }
+/* avance de obra dentro de la etiqueta 19/11/2026 */
+.pf.ok { background: linear-gradient(to right, color-mix(in srgb, var(--ok) 20%, transparent) var(--av,0%), transparent var(--av,0%)); }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -94,8 +96,9 @@ function p2(n){ return (n<10?"0":"")+n; }
 function hoy(){ var d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d.getDate()); }
 function fmt(iso){ var p=iso.split("-"); return p[2]+"/"+p[1]+"/"+p[0]; }
 var CK='<svg class="ck" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8"/><path d="M4.4 8.3l2.4 2.4 4.8-5" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function obraFill(fase,cls){ if(cls!=='ok') return ''; var m=/(\d+(?:[.,]\d+)?)\s*%/.exec(fase); if(!m) return ''; var n=Math.max(0,Math.min(100,parseFloat(m[1].replace(',','.')))); return ' style="--av:'+n+'%"'; }
 function fila(nombre,loc,fase,cls,pct,s,v,full){
-  return '<div class="pr"><div class="pn">'+esc(nombre)+'<span class="pl">'+esc(loc)+'</span></div><div class="pf '+cls+'">'+esc(fase)+'</div><div class="pb'+(full?' full':'')+'"><i style="width:'+Math.round(pct)+'%"></i></div><div class="pv">'+(full?CK:'')+s+'<span>/'+v+'</span></div></div>';
+  return '<div class="pr"><div class="pn">'+esc(nombre)+'<span class="pl">'+esc(loc)+'</span></div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb'+(full?' full':'')+'"><i style="width:'+Math.round(pct)+'%"></i></div><div class="pv">'+(full?CK:'')+s+'<span>/'+v+'</span></div></div>';
 }
 function render(d){
   var viv=0,vend=0,obra=0,nprom=0,h="";
