@@ -234,8 +234,8 @@
    "obra_viv": 68,
    "obra_pct": 16,
    "estado": "T1 en obra · 16 %",
-   "maps": "https://www.google.com/maps/search/?api=1&query=Danubio%20Azul%2C%20Usme%2C%20Bogot%C3%A1",
-   "maps_precision": "zona"
+   "maps": "https://www.google.com/maps?cid=11262495475843225376",
+   "maps_precision": "exacta"
   },
   {
    "nombre": "Cerasus Sexta Entrada",
