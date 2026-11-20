@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-19",
+ "actualizado": "2026-11-20",
  "zonas": [
   {
    "zona": "Madrid",
@@ -68,7 +68,7 @@
      "nombre": "Valdecarros · Vescoop",
      "localidad": "Madrid · Valdecarros",
      "viviendas": 52,
-     "vendidas": 40,
+     "vendidas": 41,
      "fase": "Comercialización",
      "cls": "",
      "obra": false,
@@ -93,7 +93,7 @@
      "nombre": "Catedral · Impulsa Nova Arcosur",
      "localidad": "Zaragoza · Arcosur",
      "viviendas": 95,
-     "vendidas": 22,
+     "vendidas": 25,
      "fase": "Licencia",
      "cls": "warn",
      "obra": false,
@@ -298,6 +298,12 @@
    "hito": "Emisión del CFO de Rivas RU1 (retrasado)",
    "ambito": "Rivas RU1",
    "tipo": "Obra"
+  },
+  {
+   "fecha": "2026-11-30",
+   "hito": "Pago a Azora del 2º 20 % de Valdecarros (tras aprobar Akela el PBC)",
+   "ambito": "Valdecarros",
+   "tipo": "Financiación"
   },
   {
    "fecha": "2026-12-14",
