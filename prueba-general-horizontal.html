@@ -1,5 +1,10 @@
 <!doctype html><html lang="es"><head>
-<script>/* movil-a-vertical 20/11/2026: el panel horizontal es para pantallas; en un teléfono se abre la versión vertical */ if (Math.min(window.innerWidth, screen.width) <= 700) location.replace('prueba-general.html');</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* auto-orientacion (prueba 20/11/2026): cada panel abre su versión vertical u horizontal según la pantalla; los teléfonos van siempre a la vertical; añadir ?fijo a la dirección lo desactiva */
+(function(){ var ESTA='h', OTRA='prueba-general.html'; if (/[?&]fijo/.test(location.search)) return;
+  function quiere(){ var w=window.innerWidth, h=window.innerHeight; if (!w||!h) return ESTA; var movil=Math.min(w,h)<=700; return (movil||h>=w)?'v':'h'; }
+  function mira(){ if (quiere()!==ESTA) location.replace(OTRA+location.search+location.hash); }
+  mira(); var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(mira,400); });
+})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panel Grupo Impulsa</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
