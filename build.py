@@ -41,5 +41,9 @@ new="""  var tot=0; secs.forEach(function(s){tot+=s.n;}); var cols=[[],[],[]], w
 h=h.replace(old,new)
 h=h.replace("document.getElementById('hitos').innerHTML=","var _h=document.getElementById('hitos'); if(_h) _h.innerHTML=")
 assert 'id="hitos"' not in h and 'colC' in h
+# 20/11/2026: con nombres a 2 líneas el recorte de letras se evita con más interlínea (no con relleno, que dejaría ver la 3ª línea)
+_a=".pn .pt { padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }"
+assert _a in h; h=h.replace(_a,".pn .pt { line-height:1.4; padding-top:0.1em; margin-top:-0.22em; padding-bottom:0.1em; margin-bottom:-0.04em; }")
+_r="location.replace('index.html')"; assert _r in h; h=h.replace(_r,"location.replace('general.html')")
 open('general-horizontal.html','w').write(h)
 print("ok")

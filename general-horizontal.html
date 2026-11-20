@@ -1,4 +1,5 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html><html lang="es"><head>
+<script>/* movil-a-vertical 20/11/2026: el panel horizontal es para pantallas; en un teléfono se abre la versión vertical */ if (Math.min(window.innerWidth, screen.width) <= 700) location.replace('general.html');</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panel Grupo Impulsa</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
@@ -74,6 +75,15 @@ footer { margin-top:auto; gap:2vh; white-space:nowrap; border-top: 1px solid var
 .pv { display:flex; justify-content:flex-end; align-items:baseline; white-space:nowrap; }
 /* avance de obra dentro de la etiqueta 19/11/2026 */
 .pf.ok { background: linear-gradient(to right, color-mix(in srgb, var(--ok) 20%, transparent) var(--av,0%), transparent var(--av,0%)); }
+
+/* enlace a Google Maps 20/11/2026: el icono solo se ve con ratón o en móvil; en la TV la fila queda igual */
+.pl a.mp { color:inherit; text-decoration:none; } .pl a.mp svg { display:none; width:0.8em; height:0.8em; fill:var(--car); vertical-align:baseline; position:relative; top:0.08em; margin-right:0.3em; }
+@media (hover:hover) and (pointer:fine), (max-width:700px) { .pl a.mp svg { display:inline-block; } .pl a.mp:hover { color:var(--car); } }
+
+/* 20/11/2026: sin recortes de letra (descendentes) */
+.pn { padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }
+.pn .pt { line-height:1.4; padding-top:0.1em; margin-top:-0.22em; padding-bottom:0.1em; margin-bottom:-0.04em; }
+.nb { white-space:nowrap; }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -99,19 +109,21 @@ function p2(n){ return (n<10?"0":"")+n; }
 function hoy(){ var d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d.getDate()); }
 function fmt(iso){ var p=iso.split("-"); return p[2]+"/"+p[1]+"/"+p[0]; }
 function obraFill(fase,cls){ if(cls!=='ok') return ''; var m=/(\d+(?:[.,]\d+)?)\s*%/.exec(fase); if(!m) return ''; var n=Math.max(0,Math.min(100,parseFloat(m[1].replace(',','.')))); return ' style="--av:'+n+'%"'; }
-function fila(nombre,loc,fase,cls,pct,s,v,full){
-  return '<div class="pr"><div class="pn"><span class="pt">'+esc(nombre)+'</span><span class="pl">'+esc(loc)+'</span></div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
+var PIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
+function nomb(n){ return esc(n).split(' · ').map(function(x){return '<span class="nb">'+x+'</span>';}).join('\u00a0· '); }
+function fila(nombre,loc,fase,cls,pct,s,v,full,maps){
+  return '<div class="pr"><div class="pn"><span class="pt">'+nomb(nombre)+'</span><span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+'</span></div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
 }
 function render(d){
   var viv=0,vend=0,obra=0,nprom=0,h="",secs=[];
   d.zonas.forEach(function(z){
     var tv=0,ts=0,rows="";
     z.promos.forEach(function(p){ tv+=p.viviendas; ts+=p.vendidas; viv+=p.viviendas; vend+=p.vendidas; if(p.obra) obra+=p.viviendas; if(!p.espera) nprom++;
-      rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas,p.viviendas>0&&p.vendidas>=p.viviendas); });
+      rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas,p.viviendas>0&&p.vendidas>=p.viviendas,p.maps); });
     secs.push({n:z.promos.length+1.2,h:'<section style="flex:'+(z.promos.length+1.2)+'"><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2><div class="rows">'+rows+'</div></section>'});
   });
   var c="";
-  d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv.',p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE',false); });
+  d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv.',p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE',false,p.maps); });
   secs.push({n:d.colombia.length+1.2,h:'<section style="flex:'+(d.colombia.length+1.2)+'"><h2>Colombia<span>Hábitat Colombia · ventas sobre PE</span></h2><div class="rows">'+c+'</div></section>'});
   var tot=0; secs.forEach(function(s){tot+=s.n;}); var cols=[[],[],[]], w=[0,0,0], k=0, acc=0;
   secs.forEach(function(s){ cols[k].push(s.h); w[k]+=s.n; acc+=s.n; if(k<2 && acc>=tot*(k+1)/3-0.5) k++; });

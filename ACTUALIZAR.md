@@ -22,5 +22,5 @@
 
 - Las etiquetas verdes de obra ("En obra · 89 %", "T1 en obra · 16 %") se rellenan solas hasta el porcentaje que aparece en el texto de `fase`/`estado`. Basta con actualizar ese texto.
 
-## Enlace a Google Maps (20/11/2026, solo en páginas de prueba)
-Cada promoción puede llevar en datos.json los campos `maps` (URL de Google Maps) y `maps_precision` (exacta / calle / zona). Las páginas prueba*.html pintan un icono de ubicación junto a la localidad que abre ese enlace; las páginas reales ignoran el campo hasta que Diego dé el visto bueno.
+## Enlace a Google Maps (20/11/2026, en los cuatro paneles)
+Cada promoción puede llevar en datos.json los campos `maps` (URL de Google Maps) y `maps_precision` (exacta / calle / zona). Los paneles pintan un icono de ubicación junto a la localidad que abre ese enlace en una pestaña nueva. Los paneles horizontales, abiertos en un teléfono, redirigen a su versión vertical.
