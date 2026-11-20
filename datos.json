@@ -12,7 +12,9 @@
      "fase": "En obra · 89 %",
      "cls": "ok",
      "obra": true,
-     "espera": false
+     "espera": false,
+     "maps": "https://www.google.com/maps/search/?api=1&query=40.345441%2C-3.5174866",
+     "maps_precision": "exacta"
     },
     {
      "nombre": "Los Molinos I · Paradiso",
