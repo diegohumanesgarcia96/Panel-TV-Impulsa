@@ -246,8 +246,8 @@
    "obra_viv": 0,
    "obra_pct": 0,
    "estado": "Preventa 1ª fase",
-   "maps": "https://www.google.com/maps/search/?api=1&query=V%C3%ADa%20Malambo-Caracol%C3%AD%2C%20Sexta%20Entrada%2C%20Malambo%2C%20Atl%C3%A1ntico",
-   "maps_precision": "zona"
+   "maps": "https://www.google.com/maps?cid=8832604443657804504",
+   "maps_precision": "exacta"
   }
  ],
  "hitos": [
