@@ -76,8 +76,14 @@ footer { margin-top:auto; gap:2vh; white-space:nowrap; border-top: 1px solid var
 .pf.ok { background: linear-gradient(to right, color-mix(in srgb, var(--ok) 20%, transparent) var(--av,0%), transparent var(--av,0%)); }
 
 /* enlace a Google Maps 20/11/2026: el icono solo se ve con ratón o en móvil; en la TV la fila queda igual */
-.pl a.mp { color:inherit; text-decoration:none; } .pl a.mp svg { display:none; width:1em; height:1em; fill:var(--car); vertical-align:-0.12em; margin-right:0.3em; }
+.pl a.mp { color:inherit; text-decoration:none; } .pl a.mp svg { display:none; width:0.8em; height:0.8em; fill:var(--car); vertical-align:baseline; position:relative; top:0.08em; margin-right:0.3em; }
 @media (hover:hover) and (pointer:fine), (max-width:700px) { .pl a.mp svg { display:inline-block; } .pl a.mp:hover { color:var(--car); } }
+
+/* 20/11/2026: sin recortes de letra (descendentes) */
+.pn { padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.08em; margin-top:-0.08em; }
+.pn .pt { line-height:1.38; margin-top:-0.14em; padding-bottom:0.06em; }
+@media (max-width:700px) { .pn { overflow:visible; } .pn .pt { display:block; white-space:normal; overflow:visible; -webkit-line-clamp:unset; text-wrap:balance; } }
+.nb { white-space:nowrap; }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -104,8 +110,9 @@ function hoy(){ var d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d
 function fmt(iso){ var p=iso.split("-"); return p[2]+"/"+p[1]+"/"+p[0]; }
 function obraFill(fase,cls){ if(cls!=='ok') return ''; var m=/(\d+(?:[.,]\d+)?)\s*%/.exec(fase); if(!m) return ''; var n=Math.max(0,Math.min(100,parseFloat(m[1].replace(',','.')))); return ' style="--av:'+n+'%"'; }
 var PIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
+function nomb(n){ return esc(n).split(' · ').map(function(x){return '<span class="nb">'+x+'</span>';}).join('\u00a0· '); }
 function fila(nombre,loc,fase,cls,pct,s,v,full,maps){
-  return '<div class="pr"><div class="pn"><span class="pt">'+esc(nombre)+'</span><span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+'</span></div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
+  return '<div class="pr"><div class="pn"><span class="pt">'+nomb(nombre)+'</span><span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+'</span></div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
 }
 function render(d){
   var viv=0,vend=0,obra=0,nprom=0,h="",secs=[];
