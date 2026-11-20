@@ -1,4 +1,10 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html><html lang="es"><head>
+<script>/* auto-orientacion 20/11/2026: el enlace compartido (versión horizontal) abre la vertical en teléfonos y pantallas verticales, y vuelve a la horizontal si la pantalla es apaisada */
+(function(){ var ESTA='v', OTRA='horizontal.html'; if (!/[?&]auto/.test(location.search)) return; /* abierto directamente queda fijo (teles); solo cambia si se llega desde el enlace compartido (…?auto) */
+  function quiere(){ var w=window.innerWidth, h=window.innerHeight; if (!w||!h) return ESTA; var movil=Math.min(w,h)<=700; return (movil||h>=w)?'v':'h'; }
+  function mira(){ if (quiere()!==ESTA) location.replace(OTRA+'?auto'); }
+  mira(); var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(mira,400); });
+})();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panel Grupo Impulsa</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">

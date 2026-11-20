@@ -22,6 +22,7 @@ for a,c in [(".pn { font-size: 1.68vmin;",".pn { font-size: 1.95vmin;"),(".pn .p
             (".pb { height: 0.87vmin;",".pb { height: 1vmin;"),("grid-template-columns: 1fr 15.19vmin 19.17vmin 8.79vmin;","grid-template-columns: 1fr 16.5vmin 19.17vmin 9.5vmin;")]:
     assert a in v, a; v=v.replace(a,c)
 assert 'id="hitos"' not in v
+_r="OTRA='horizontal.html'"; assert _r in v; v=v.replace(_r,"OTRA='general-horizontal.html'")
 open('general.html','w').write(v)
 # ---------- horizontal general: 3 columnas de zonas ----------
 h=open('horizontal.html').read()
@@ -44,6 +45,6 @@ assert 'id="hitos"' not in h and 'colC' in h
 # 20/11/2026: con nombres a 2 líneas el recorte de letras se evita con más interlínea (no con relleno, que dejaría ver la 3ª línea)
 _a=".pn .pt { padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }"
 assert _a in h; h=h.replace(_a,".pn .pt { line-height:1.4; padding-top:0.1em; margin-top:-0.22em; padding-bottom:0.1em; margin-bottom:-0.04em; }")
-_r="location.replace('index.html')"; assert _r in h; h=h.replace(_r,"location.replace('general.html')")
+_r="OTRA='index.html'"; assert _r in h; h=h.replace(_r,"OTRA='general.html'")
 open('general-horizontal.html','w').write(h)
 print("ok")

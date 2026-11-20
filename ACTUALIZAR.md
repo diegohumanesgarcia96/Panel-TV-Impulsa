@@ -24,3 +24,9 @@
 
 ## Enlace a Google Maps (20/11/2026, en los cuatro paneles)
 Cada promoción puede llevar en datos.json los campos `maps` (URL de Google Maps) y `maps_precision` (exacta / calle / zona). Los paneles pintan un icono de ubicación junto a la localidad que abre ese enlace en una pestaña nueva. Los paneles horizontales, abiertos en un teléfono, redirigen a su versión vertical.
+
+## Enlaces y orientación automática (20/11/2026)
+
+- Enlaces para compartir (se adaptan solos a la pantalla): General = `general-horizontal.html` · Madrid con hitos = `horizontal.html`. En teléfonos y pantallas verticales abren la versión vertical (`general.html?auto` / `index.html?auto`) y vuelven a la horizontal si la pantalla es apaisada.
+- Las versiones verticales abiertas directamente (teles: raíz/`index.html` y `general.html`) quedan fijas; solo cambian si llevan `?auto`.
+- El script va al principio del `<head>` de `index.html` y `horizontal.html`; `build.py` lo adapta para las dos páginas generales. No tocar los nombres de archivo: son los enlaces ya enviados.

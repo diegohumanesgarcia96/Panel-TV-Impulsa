@@ -1,8 +1,8 @@
 <!doctype html><html lang="es"><head>
-<script>/* auto-orientacion (prueba 20/11/2026): cada panel abre su versión vertical u horizontal según la pantalla; los teléfonos van siempre a la vertical; solo actúa si la dirección lleva ?auto */
-(function(){ var ESTA='h', OTRA='prueba.html'; if (!/[?&]auto/.test(location.search)) return; /* solo cambia si se entra por el enlace único (…?auto); los enlaces de siempre quedan fijos */
+<script>/* auto-orientacion 20/11/2026: el enlace compartido (versión horizontal) abre la vertical en teléfonos y pantallas verticales, y vuelve a la horizontal si la pantalla es apaisada */
+(function(){ var ESTA='h', OTRA='prueba.html'; /* enlace compartido: siempre elige versión según la pantalla */
   function quiere(){ var w=window.innerWidth, h=window.innerHeight; if (!w||!h) return ESTA; var movil=Math.min(w,h)<=700; return (movil||h>=w)?'v':'h'; }
-  function mira(){ if (quiere()!==ESTA) location.replace(OTRA+location.search+location.hash); }
+  function mira(){ if (quiere()!==ESTA) location.replace(OTRA+'?auto'); }
   mira(); var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(mira,400); });
 })();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panel Grupo Impulsa</title>
