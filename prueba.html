@@ -83,19 +83,6 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 .pn { padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }
 @media (max-width:700px) { .pn { white-space:normal; overflow:visible; text-wrap:balance; } }
 .nb { white-space:nowrap; }
-
-/* 20/11/2026: en móvil las horas (Madrid y Bogotá) y la fecha van en una línea bajo el título */
-@media (max-width: 700px) {
-  header { flex-wrap:wrap; row-gap:1.6vmin; }
-  header .right { display:contents; }
-  header img { order:2; }
-  header .clock { order:3; flex:0 0 100%; display:flex; justify-content:space-between; align-items:baseline; text-align:left; font-size:2.6vmin; line-height:1.2; }
-  header .clock .tzs { gap:3vmin; justify-content:flex-start; }
-  header .clock .tz { display:flex; align-items:baseline; gap:1.4vmin; text-align:left; }
-  header .clock .tz small { display:inline; font-size:2.1vmin; line-height:1.2; }
-  header .clock b { display:inline; font-size:3.4vmin; }
-  header .clock .tz + .tz { padding-left:3vmin; }
-}
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>

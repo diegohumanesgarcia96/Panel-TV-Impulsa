@@ -30,3 +30,4 @@ Cada promoción puede llevar en datos.json los campos `maps` (URL de Google Maps
 - Enlaces para compartir (se adaptan solos a la pantalla): General = `general-horizontal.html` · Madrid con hitos = `horizontal.html`. En teléfonos y pantallas verticales abren la versión vertical (`general.html?auto` / `index.html?auto`) y vuelven a la horizontal si la pantalla es apaisada.
 - Las versiones verticales abiertas directamente (teles: raíz/`index.html` y `general.html`) quedan fijas; solo cambian si llevan `?auto`.
 - El script va al principio del `<head>` de `index.html` y `horizontal.html`; `build.py` lo adapta para las dos páginas generales. No tocar los nombres de archivo: son los enlaces ya enviados.
+- Paneles horizontales: las medidas usan `calc(N * var(--u))` con `--u: min(1vh, 0.5625vw)` (no `vh` directo), para que en pantallas menos apaisadas que 16:9 no se corten nombres. En 16:9 o más ancho es idéntico. En móvil no se muestran las horas (decisión 20/11).

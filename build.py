@@ -31,9 +31,9 @@ h=h.replace('<div class="main"><div class="col" id="colA"></div><div class="col"
 h=h.replace("grid-template-columns: 1fr 1fr 0.55fr;","grid-template-columns: 1fr 1fr 1fr;")
 # nombres a 2 líneas (columnas más estrechas, pero hay altura de sobra)
 h=h.replace(".pn .pt { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }",".pn .pt { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }")
-h=h.replace(".pn { font-size: 1.62vh;",".pn { font-size: 1.65vh;")
-h=h.replace("grid-template-columns: 1fr 13.2vh 7vh 8.8vh;","grid-template-columns: 1fr 12.4vh 7vh 8vh;")
-h=h.replace(".pf { font-size: 1.2vh;",".pf { font-size: 1.15vh;")
+h=h.replace(".pn { font-size: calc(1.62 * var(--u));",".pn { font-size: calc(1.65 * var(--u));")
+h=h.replace("grid-template-columns: 1fr calc(13.2 * var(--u)) calc(7 * var(--u)) calc(8.8 * var(--u));","grid-template-columns: 1fr calc(12.4 * var(--u)) calc(7 * var(--u)) calc(8 * var(--u));")
+h=h.replace(".pf { font-size: calc(1.2 * var(--u));",".pf { font-size: calc(1.15 * var(--u));")
 # reparto en 3 columnas (greedy por peso, orden de zonas)
 old=re.search(r"  var tot=0; secs\.forEach.*?colB'\)\.innerHTML=b;", h, re.S).group(0)
 new="""  var tot=0; secs.forEach(function(s){tot+=s.n;}); var cols=[[],[],[]], w=[0,0,0], k=0, acc=0;
