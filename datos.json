@@ -154,7 +154,9 @@
      "fase": "Comercialización",
      "cls": "",
      "obra": false,
-     "espera": false
+     "espera": false,
+     "maps": "https://www.google.com/maps/search/?api=1&query=Carretera%20de%20Barcelona%2C%20Cerdanyola%20del%20Vall%C3%A8s",
+     "maps_precision": "zona"
     },
     {
      "nombre": "Parc de l'Alba R.21-01 · Fem Ciutat",
