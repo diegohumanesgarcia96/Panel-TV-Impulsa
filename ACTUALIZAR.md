@@ -18,10 +18,6 @@
 ## Versión Excel (formato Impulsa)
 - `python3 panel_excel.py <Plantilla_Impulsa.xlsx> <salida.xlsx>` genera el mismo panel en Excel (Portada · Panel · Hitos) a partir de `datos.json`. Se regenera con cada actualización de datos si Diego lo pide.
 
-## 100 % vendido
-
-- Cuando una promoción tiene vendidas = viviendas, la barra sale en verde con un check junto a la cifra. Es automático; no requiere ningún campo en `datos.json`.
-
 ## Avance de obra en la etiqueta
 
 - Las etiquetas verdes de obra ("En obra · 89 %", "T1 en obra · 16 %") se rellenan solas hasta el porcentaje que aparece en el texto de `fase`/`estado`. Basta con actualizar ese texto.
