@@ -223,7 +223,52 @@
      "maps": "https://www.google.com/maps/search/?api=1&query=P%C3%ADtamo%20Sur%2C%20Sevilla",
      "maps_precision": "zona"
     }
-   ]
+   ],
+   "terceros": {
+    "nombre": "Terceros · Avium Sur",
+    "localidad": "6 promociones · Sevilla y Granada",
+    "fase": "Comercialización",
+    "viviendas": 632,
+    "fuente": "Excel 'Volumen de ventas Impulsa-Avium' (Alfonso Sánchez, 20/11/2026)",
+    "promociones": [
+     {
+      "nombre": "Entreolivos Pítamo Sur",
+      "cliente": "EMVISESA",
+      "localidad": "Bellavista · Sevilla",
+      "viviendas": 67
+     },
+     {
+      "nombre": "Sierra de Aroche",
+      "cliente": "Metrovacesa",
+      "localidad": "Palmas Altas · Sevilla",
+      "viviendas": 110
+     },
+     {
+      "nombre": "Sierra de Baza",
+      "cliente": "Metrovacesa",
+      "localidad": "Palmas Altas · Sevilla",
+      "viviendas": 80
+     },
+     {
+      "nombre": "Sierra de Neila",
+      "cliente": "Metrovacesa",
+      "localidad": "Palmas Altas · Sevilla",
+      "viviendas": 57
+     },
+     {
+      "nombre": "Vega Residencial",
+      "cliente": "Metrovacesa",
+      "localidad": "Granada",
+      "viviendas": 310
+     },
+     {
+      "nombre": "CC 46",
+      "cliente": "AGC & Asociados",
+      "localidad": "Ctra. de Carmona · Sevilla",
+      "viviendas": 8
+     }
+    ]
+   }
   }
  ],
  "colombia": [
