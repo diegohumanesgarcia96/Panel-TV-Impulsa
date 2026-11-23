@@ -39,16 +39,18 @@ CSS_H = """
 .ob b { display:block; font-size: calc(1.62 * var(--u)); font-weight:600; line-height:1.2; }
 .ob span { display:block; font-size: calc(1.35 * var(--u)); color: var(--grey); line-height:1.25; text-wrap:balance; }
 .ob em { font-style:normal; font-size: calc(1.35 * var(--u)); font-weight:600; color: var(--car); white-space:nowrap; }
+.lat.cmp .ob { padding: calc(0.3 * var(--u)) 0; } .lat.cmp .hi { padding: calc(0.25 * var(--u)) 0; } .lat.cmp .hitos h2 { margin-bottom: calc(0.2 * var(--u)); } .lat.cmp .hitos { padding-top: calc(0.7 * var(--u)); padding-bottom: calc(0.7 * var(--u)); } .lat.cmp .ht span { display:none; }
 .lat #hitos { overflow:hidden; } .lat .ht { font-size: calc(1.62 * var(--u)); } .lat .hd { font-size: calc(1.9 * var(--u)); } .lat .hi { grid-template-columns: calc(8.6 * var(--u)) 1fr; padding: calc(0.5 * var(--u)) 0; }
 """
 patch('prueba.html','<div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div>',
-      '<div class="bajo"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>', CSS_V, 6)
+      '<div class="bajo"><div class="hitos obj"><h2>Objetivos semanales</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>', CSS_V, 6)
 patch('prueba-horizontal.html','<div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div>',
-      '<div class="lat"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>', CSS_H, 5)
+      '<div class="lat"><div class="hitos obj"><h2>Objetivos semanales</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>', CSS_H, 5)
 # horizontal: si los hitos no caben en su bloque, se quitan los más lejanos
 s=open('prueba-horizontal.html').read()
 a="  document.getElementById('hitos').innerHTML=out||'<div class=\"hi\"><div class=\"ht\">Sin hitos próximos</div></div>';\n}"
 assert s.count(a)==1
-s=s.replace(a,a[:-1]+"  ajustaLat(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaLat);\n}\nfunction ajustaLat(){ var h=document.getElementById('hitos'); if(!h||!document.getElementById('objs')) return; var hs=h.querySelectorAll('.hi'), i=hs.length-1; while(i>=2 && h.scrollHeight>h.clientHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } }")
+s=s.replace(a,a[:-1]+"  ajustaLat(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaLat);\n}\nfunction ajustaLat(){ var h=document.getElementById('hitos'); if(!h||!document.getElementById('objs')) return; var hs=h.querySelectorAll('.hi'), i=hs.length-1; while(i>=4 && h.scrollHeight>h.clientHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } if(h.scrollHeight>h.clientHeight+1){ h.parentNode.parentNode.className+=' cmp'; } }")
 open('prueba-horizontal.html','w').write(s)
+v=open('prueba.html').read(); x="while(i>=3 && document.documentElement.scrollHeight"; assert v.count(x)==1; open('prueba.html','w').write(v.replace(x,"while(i>=4 && document.documentElement.scrollHeight"))
 print('objetivos montados en prueba')

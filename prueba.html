@@ -114,7 +114,7 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 <div class="kpi"><div class="l">Promociones actuales</div><div class="v"><span id="k-prom">—</span><small id="k-col" class="blk"></small></div></div>
 </div>
 <div class="zones" id="zones"></div>
-<div class="bajo"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>
+<div class="bajo"><div class="hitos obj"><h2>Objetivos semanales</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>
 <footer><span>Impulsa Proyectos Inmobiliarios, S.L. · www.impulsaproyectos.com</span></footer>
 </div>
 <div id="msg">Cargando datos…</div>
@@ -175,7 +175,7 @@ function renderHitos(d){
   ajustaHitos(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaHitos);
 }
 /* 23/11/2026: si al crecer la lista de promociones el panel no cabe en la tele, se quitan los hitos más lejanos (mínimo 3) hasta que quepa. En móvil no actúa. */
-function ajustaHitos(){ if(window.innerWidth<=700) return; var hs=document.querySelectorAll('#hitos .hi'), i=hs.length-1; while(i>=3 && document.documentElement.scrollHeight>window.innerHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } }
+function ajustaHitos(){ if(window.innerWidth<=700) return; var hs=document.querySelectorAll('#hitos .hi'), i=hs.length-1; while(i>=4 && document.documentElement.scrollHeight>window.innerHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } }
 function horaEn(tz,d){ try{ return new Intl.DateTimeFormat('es-ES',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(d); }catch(e){ return p2(d.getHours())+':'+p2(d.getMinutes()); } }
 function reloj(){ var d=new Date(); document.getElementById('hora').textContent=horaEn('Europe/Madrid',d); document.getElementById('hora-co').textContent=horaEn('America/Bogota',d);
   document.getElementById('fecha').textContent=DIA[d.getDay()]+' '+d.getDate()+' '+MES[d.getMonth()]+' '+d.getFullYear();

@@ -116,6 +116,7 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 .ob b { display:block; font-size: calc(1.62 * var(--u)); font-weight:600; line-height:1.2; }
 .ob span { display:block; font-size: calc(1.35 * var(--u)); color: var(--grey); line-height:1.25; text-wrap:balance; }
 .ob em { font-style:normal; font-size: calc(1.35 * var(--u)); font-weight:600; color: var(--car); white-space:nowrap; }
+.lat.cmp .ob { padding: calc(0.3 * var(--u)) 0; } .lat.cmp .hi { padding: calc(0.25 * var(--u)) 0; } .lat.cmp .hitos h2 { margin-bottom: calc(0.2 * var(--u)); } .lat.cmp .hitos { padding-top: calc(0.7 * var(--u)); padding-bottom: calc(0.7 * var(--u)); } .lat.cmp .ht span { display:none; }
 .lat #hitos { overflow:hidden; } .lat .ht { font-size: calc(1.62 * var(--u)); } .lat .hd { font-size: calc(1.9 * var(--u)); } .lat .hi { grid-template-columns: calc(8.6 * var(--u)) 1fr; padding: calc(0.5 * var(--u)) 0; }
 </style></head><body>
 <div class="wrap">
@@ -128,7 +129,7 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 <div class="kpi"><div class="l">Promociones actuales</div><div class="v"><span id="k-prom">—</span><small id="k-col" class="blk"></small></div></div>
 </div>
 <div class="main"><div class="col" id="colA"></div><div class="col" id="colB"></div>
-<div class="lat"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div></div>
+<div class="lat"><div class="hitos obj"><h2>Objetivos semanales</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div></div>
 <footer><span>Impulsa Proyectos Inmobiliarios, S.L. · www.impulsaproyectos.com</span></footer>
 </div>
 <div id="msg">Cargando datos…</div>
@@ -192,7 +193,7 @@ function renderHitos(d){
   document.getElementById('hitos').innerHTML=out||'<div class="hi"><div class="ht">Sin hitos próximos</div></div>';
   ajustaLat(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaLat);
 }
-function ajustaLat(){ var h=document.getElementById('hitos'); if(!h||!document.getElementById('objs')) return; var hs=h.querySelectorAll('.hi'), i=hs.length-1; while(i>=2 && h.scrollHeight>h.clientHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } }
+function ajustaLat(){ var h=document.getElementById('hitos'); if(!h||!document.getElementById('objs')) return; var hs=h.querySelectorAll('.hi'), i=hs.length-1; while(i>=4 && h.scrollHeight>h.clientHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } if(h.scrollHeight>h.clientHeight+1){ h.parentNode.parentNode.className+=' cmp'; } }
 function horaEn(tz,d){ try{ return new Intl.DateTimeFormat('es-ES',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(d); }catch(e){ return p2(d.getHours())+':'+p2(d.getMinutes()); } }
 function reloj(){ var d=new Date(); document.getElementById('hora').textContent=horaEn('Europe/Madrid',d); document.getElementById('hora-co').textContent=horaEn('America/Bogota',d);
   document.getElementById('fecha').textContent=DIA[d.getDay()]+' '+d.getDate()+' '+MES[d.getMonth()]+' '+d.getFullYear();
