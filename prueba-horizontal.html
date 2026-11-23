@@ -131,7 +131,7 @@ function render(d){
     z.promos.forEach(function(p){ tv+=p.viviendas; ts+=p.vendidas; viv+=p.viviendas; vend+=p.vendidas; if(p.obra) obra+=p.viviendas; if(!p.espera) nprom++;
       rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas,p.viviendas>0&&p.vendidas>=p.viviendas,p.maps); });
     var nt=0; if(z.terceros){ rows+=filaT(z.terceros); nt=1; }
-    secs.push({n:z.promos.length+nt+1.2,h:'<section style="flex:'+(z.promos.length+nt+1.2)+'"><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2><div class="rows">'+rows+'</div></section>'});
+    secs.push({n:z.promos.length+nt+1.2,h:'<section style="flex:'+(z.promos.length+nt+1.2)+'"><h2>'+esc(z.zona)+'<span>'+fmtN(tv)+' viv. · '+fmtN(ts)+' vendidas</span></h2><div class="rows">'+rows+'</div></section>'});
   });
   var c="";
   d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv.',p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE',false,p.maps); });
@@ -139,8 +139,8 @@ function render(d){
   var tot=0; secs.forEach(function(s){tot+=s.n;}); var a="",b="",acc=0;
   secs.forEach(function(s){ if(acc<tot/2 && (acc+s.n<=tot/2+1.5 || !a)){ a+=s.h; acc+=s.n; } else b+=s.h; });
   document.getElementById('colA').innerHTML=a; document.getElementById('colB').innerHTML=b;
-  var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=viv+' ESP + '+fmtN(vc)+' COL'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=vend+' ESP + '+sc+' COL';
-  document.getElementById('k-pct').textContent=(viv+vc)?Math.round((vend+sc)/(viv+vc)*100)+' %':''; document.getElementById('k-obra').textContent=fmtN(obra+oc); document.getElementById('k-obra-split').textContent=obra+' ESP + '+oc+' COL';
+  var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=fmtN(viv)+' ESP + '+fmtN(vc)+' COL'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=fmtN(vend)+' ESP + '+fmtN(sc)+' COL';
+  document.getElementById('k-pct').textContent=(viv+vc)?Math.round((vend+sc)/(viv+vc)*100)+' %':''; document.getElementById('k-obra').textContent=fmtN(obra+oc); document.getElementById('k-obra-split').textContent=fmtN(obra)+' ESP + '+fmtN(oc)+' COL';
   document.getElementById('k-prom').textContent=nprom+d.colombia.length; document.getElementById('k-col').textContent=nprom+' ESP + '+d.colombia.length+' COL';
   var u=document.getElementById('upd'); if(u) u.textContent=fmt(d.actualizado);
   renderHitos(d);

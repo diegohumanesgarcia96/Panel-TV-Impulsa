@@ -11,8 +11,8 @@ v=v.replace('<meta name="claude:viewport-fit-sides" content="cover">','<meta nam
 # sin hitos sobra altura: secciones proporcionales al nº de filas, filas repartidas y tipografía algo mayor
 v=v.replace(".zones section { flex:1; display:flex; flex-direction:column; justify-content:center; }",
   ".zones section { display:flex; flex-direction:column; }\n.rows { flex:1; display:flex; flex-direction:column; justify-content:space-evenly; }\n.rows .pr { border-bottom:0; padding:0.2vmin 0; } .rows .pr + .pr { border-top:1px solid var(--line); }")
-v=v.replace("'<section><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2>'+rows+'</section>'",
-  "'<section style=\"flex:'+(z.promos.length+1.3)+'\"><h2>'+esc(z.zona)+'<span>'+tv+' viv. · '+ts+' vendidas</span></h2><div class=\"rows\">'+rows+'</div></section>'")
+v=v.replace("'<section><h2>'+esc(z.zona)+'<span>'+fmtN(tv)+' viv. · '+fmtN(ts)+' vendidas</span></h2>'+rows+'</section>'",
+  "'<section style=\"flex:'+(z.promos.length+1.3)+'\"><h2>'+esc(z.zona)+'<span>'+fmtN(tv)+' viv. · '+fmtN(ts)+' vendidas</span></h2><div class=\"rows\">'+rows+'</div></section>'")
 v=v.replace("'<section><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2>'+c+'</section>'",
   "'<section style=\"flex:'+(d.colombia.length+1.3)+'\"><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2><div class=\"rows\">'+c+'</div></section>'")
 assert v.count('class=\"rows\"')==2, v.count('rows')
