@@ -93,22 +93,19 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 /* 20/11/2026: pantallas menos apaisadas que 16:9 (portátiles 16:10, tabletas): todo se mide como si fuera 16:9, así no se corta ningún nombre. En 16:9 o más ancho no cambia nada. */
 :root { --u: min(1vh, 0.5625vw); }
 
-/* 23/11/2026 (prueba): entrega prevista y retraso */
+/* 23/11/2026: entrega prevista y retraso. Teles verticales: en el hueco entre el nombre y la fase. Móvil: línea propia bajo la localidad */
 .pn { display:flex; align-items:center; justify-content:space-between; gap:0.9em; }
 .pnt { min-width:0; flex:1 1 auto; overflow:hidden; text-overflow:ellipsis; padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }
 .pe { flex:0 0 auto; text-align:right; white-space:nowrap; font-size:0.84em; font-weight:600; line-height:1.15; color:var(--fg); }
 .pe small { display:block; font-size:0.64em; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--grey); margin-bottom:0.25em; }
 .pe.late, .pe.late small { color:var(--bad); }
-.pem { display:none; }
-@media (max-width:700px){ .pn { display:block; } .pnt { overflow:visible; } .pe { display:none; } .pem { display:inline; } .pem.late { color:var(--bad); font-weight:600; } }
-
-.pem i { font-style:normal; } .pem b { font-weight:600; color:var(--fg); } .pem.late, .pem.late b { color:var(--bad); }
-/* horizontal Madrid: la entrega va en la línea de la localidad, alineada a la derecha, para no quitar ancho al nombre */
+.pem { display:none; } .pem i { font-style:normal; } .pem b { font-weight:600; color:var(--fg); } .pem.late, .pem.late b { color:var(--bad); }
+@media (max-width:700px){ .pn { display:block; } .pnt { overflow:visible; } .pe { display:none; } .pem { display:block; margin-top:0.25em; } .pem i { display:none; } }
+/*ENT-H*/ /* horizontal Madrid: la entrega va en la línea de la localidad, alineada a la derecha, para no quitar ancho al nombre */
 .pn { display:block; } .pe { display:none; } .pnt { overflow:visible; }
-.pn .pl { display:flex; align-items:baseline; justify-content:space-between; gap:0.9em; text-wrap:nowrap; }
+.pn .pl { display:flex; align-items:baseline; justify-content:space-between; gap:0.6em; text-wrap:nowrap; }
 .pn .pl a.mp { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.pem { display:block; flex:0 0 auto; white-space:nowrap; font-size:0.88em; } .pem i { display:none; }
-.pn .pl { gap:0.6em; }
+.pem { display:block; flex:0 0 auto; white-space:nowrap; font-size:0.88em; } .pem i { display:none; } /*ENT-H-FIN*/
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -137,7 +134,7 @@ function fmt(iso){ var p=iso.split("-"); return p[2]+"/"+p[1]+"/"+p[0]; }
 function obraFill(fase,cls){ if(cls!=='ok') return ''; var m=/(\d+(?:[.,]\d+)?)\s*%/.exec(fase); if(!m) return ''; var n=Math.max(0,Math.min(100,parseFloat(m[1].replace(',','.')))); return ' style="--av:'+n+'%"'; }
 var PIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
 function nomb(n){ return esc(n).split(' · ').map(function(x){return '<span class="nb">'+x+'</span>';}).join('\u00a0· '); }
-/* 23/11/2026 (prueba): fecha de entrega prevista y aviso de retraso entre el nombre y la fase */
+/* 23/11/2026: fecha de entrega prevista y aviso de retraso por promoción (campos entrega 'AAAA-MM', retraso_meses y entrega_nota en datos.json) */
 var MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 function entrega(p){ if(!p.entrega) return null; var a=String(p.entrega).split('-'), f=MESES[(+a[1]||1)-1]+'\u00a0'+a[0], r=+p.retraso_meses||0, late=r>0?' late':'';
   var et=r>0?('Retraso '+r+(r==1?' mes':' meses')):('Entrega'+(p.entrega_nota?' '+esc(p.entrega_nota):''));

@@ -46,5 +46,8 @@ assert 'id="hitos"' not in h and 'colC' in h
 _a=".pn .pt { padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }"
 assert _a in h; h=h.replace(_a,".pn .pt { line-height:1.4; padding-top:0.1em; margin-top:-0.22em; padding-bottom:0.1em; margin-bottom:-0.04em; }")
 _r="OTRA='index.html'"; assert _r in h; h=h.replace(_r,"OTRA='general.html'")
+import re as _re
+_m=_re.search(r'/\*ENT-H\*/.*?/\*ENT-H-FIN\*/\n', h, _re.S); assert _m, 'bloque ENT-H'
+h=h[:_m.start()]+'/* horizontal general: columnas estrechas, la entrega va en una línea propia bajo la localidad */\n.pn { display:block; } .pe { display:none; } .pnt { overflow:visible; }\n.pem { display:block; margin-top:0.3em; white-space:nowrap; } .pem i { display:none; }\n'+h[_m.end():]
 open('general-horizontal.html','w').write(h)
 print("ok")
