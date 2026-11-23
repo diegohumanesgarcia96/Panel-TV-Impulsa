@@ -15,8 +15,7 @@
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.345441%2C-3.5174866",
      "maps_precision": "exacta",
-     "entrega": "2027-01",
-     "retraso_meses": 1
+     "entrega": "2027-01"
     },
     {
      "nombre": "Los Molinos I · Paradiso",
@@ -29,8 +28,7 @@
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.3211028%2C-3.6990408",
      "maps_precision": "exacta",
-     "entrega": "2027-12",
-     "retraso_meses": 2
+     "entrega": "2027-12"
     },
     {
      "nombre": "Los Montecillos · Kitara",
@@ -42,7 +40,9 @@
      "obra": true,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.3525322%2C-3.516145",
-     "maps_precision": "calle"
+     "maps_precision": "calle",
+     "entrega": "2028-04",
+     "entrega_fuente": "Planificación mayo 2026"
     },
     {
      "nombre": "Canal 65 · Laberinto (BM65)",
@@ -54,7 +54,9 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=Calle%20de%20Bravo%20Murillo%2065%2C%2028003%20Madrid",
-     "maps_precision": "exacta"
+     "maps_precision": "exacta",
+     "entrega": "2028-05",
+     "entrega_fuente": "Planificación mayo 2026"
     },
     {
      "nombre": "Los Molinos II · Carena",
@@ -66,7 +68,9 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.3206953%2C-3.7058722",
-     "maps_precision": "exacta"
+     "maps_precision": "exacta",
+     "entrega": "2028-11",
+     "entrega_fuente": "Planificación mayo 2026"
     },
     {
      "nombre": "Cerasus Ahijones",
@@ -78,7 +82,9 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.3906207%2C-3.5563641",
-     "maps_precision": "zona"
+     "maps_precision": "zona",
+     "entrega": "2030-09",
+     "entrega_fuente": "Planificación mayo 2026"
     },
     {
      "nombre": "Valdecarros · Vescoop",
@@ -90,7 +96,9 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.3600832%2C-3.5931795",
-     "maps_precision": "zona"
+     "maps_precision": "zona",
+     "entrega": "2030-02",
+     "entrega_fuente": "Planificación mayo 2026"
     },
     {
      "nombre": "Brunete Lote 3 · Cerasus Promoción",
@@ -102,7 +110,9 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.3994451%2C-3.999055",
-     "maps_precision": "exacta"
+     "maps_precision": "exacta",
+     "entrega": "2030-08",
+     "entrega_fuente": "Planificación mayo 2026"
     }
    ]
   },
