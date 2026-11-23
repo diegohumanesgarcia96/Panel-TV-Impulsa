@@ -52,7 +52,7 @@ section h2 span { color: var(--grey); text-transform:none; letter-spacing:0; fon
 .pv span { color: var(--grey); font-weight: 500; font-size: 1.45vmin; }
 .hitos { background: var(--panel); border:1px solid var(--line); border-radius: 0.81vmin; padding: 0.96vmin 1.27vmin; }
 .hitos h2 { margin:0 0 0.48vmin; font-size: 1.92vmin; font-weight:600; color: var(--car); text-transform:uppercase; letter-spacing:.06em; }
-.hi { display:grid; grid-template-columns: 9.59vmin 1fr; gap: 1.12vmin; align-items:center; padding: 0.37vmin 0; border-bottom:1px solid var(--line); }
+.hi { display:grid; grid-template-columns: 9.59vmin 1fr; gap: 1.12vmin; align-items:center; padding: 0.24vmin 0; border-bottom:1px solid var(--line); }
 .hi:last-child { border-bottom:0; }
 .hd { font-size: 1.76vmin; font-weight: 700; } .hd span { display:block; font-size: 1.20vmin; color: var(--car); font-weight: 600; }
 .hi.hoy .hd span { color: var(--bad); }
@@ -142,7 +142,10 @@ function renderHitos(d){
     out+='<div class="hi '+cls+'"><div class="hd">'+r.f.getDate()+' '+MES[r.f.getMonth()]+'<span>'+lab+'</span></div><div class="ht">'+esc(r.x.hito)+'<span>'+esc(r.x.ambito)+'</span></div></div>'; });
   if(hechos.length){ out+='<div class="hechos">Hecho esta semana: '+hechos.map(function(r){ return esc(r.x.ambito)+' · '+r.f.getDate()+' '+MES[r.f.getMonth()]; }).join('  ·  ')+'</div>'; }
   var _h=document.getElementById('hitos'); if(_h) _h.innerHTML=out||'<div class="hi"><div class="ht">Sin hitos próximos</div></div>';
+  ajustaHitos(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaHitos);
 }
+/* 23/11/2026: si al crecer la lista de promociones el panel no cabe en la tele, se quitan los hitos más lejanos (mínimo 3) hasta que quepa. En móvil no actúa. */
+function ajustaHitos(){ if(window.innerWidth<=700) return; var hs=document.querySelectorAll('#hitos .hi'), i=hs.length-1; while(i>=3 && document.documentElement.scrollHeight>window.innerHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } }
 function horaEn(tz,d){ try{ return new Intl.DateTimeFormat('es-ES',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(d); }catch(e){ return p2(d.getHours())+':'+p2(d.getMinutes()); } }
 function reloj(){ var d=new Date(); document.getElementById('hora').textContent=horaEn('Europe/Madrid',d); document.getElementById('hora-co').textContent=horaEn('America/Bogota',d);
   document.getElementById('fecha').textContent=DIA[d.getDay()]+' '+d.getDate()+' '+MES[d.getMonth()]+' '+d.getFullYear();

@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-20",
+ "actualizado": "2026-11-23",
  "zonas": [
   {
    "zona": "Madrid",
@@ -116,6 +116,18 @@
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=41.6247141%2C-0.9584084",
      "maps_precision": "calle"
+    },
+    {
+     "nombre": "Arcosur E-38",
+     "localidad": "Zaragoza · Arcosur",
+     "viviendas": 174,
+     "vendidas": 0,
+     "fase": "Oferta aceptada",
+     "cls": "",
+     "obra": false,
+     "espera": false,
+     "maps": "https://www.google.com/maps/search/?api=1&query=41.6120%2C-0.9440",
+     "maps_precision": "zona"
     }
    ]
   },
