@@ -12,6 +12,7 @@ for r,(p,a,b) in M.items():
         else:
             x="    h+='<section style=\"flex:'+(z.promos.length+1.3)+'\">"; assert s.count(x)==1
             s=s.replace(x,"    var nt=0; if(z.terceros){ rows+=filaT(z.terceros); nt=1; }\n    h+='<section style=\"flex:'+(z.promos.length+nt+1.3)+'\">")
+    k=s.rindex('</style>'); s=s[:k]+'\n/* PRUEBA: fecha de entrega en naranja corporativo */\n.pe { color: var(--car); } .pem b { color: var(--car); }\n'+s[k:]
     open(p,'w').write(s)
 print('pruebas regeneradas')
 exec(open('prueba_objetivos.py').read())
