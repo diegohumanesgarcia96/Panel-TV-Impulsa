@@ -93,10 +93,8 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 .pem { display:none; } .pem i { font-style:normal; } .pem b { font-weight:600; color:var(--fg); } .pem.late, .pem.late b { color:var(--bad); }
 @media (max-width:700px){ .pn { display:block; } .pnt { overflow:visible; } .pe { display:none; } .pem { display:block; margin-top:0.25em; } .pem i { display:none; } }
 
-/* PRUEBA: fecha de entrega en naranja corporativo */
-.pe { color: var(--car); } .pem b { color: var(--car); }
-
-/* PRUEBA objetivos + hitos (vertical Madrid) */
+/* Objetivos semanales + hitos (vertical Madrid) */
+.bajo.solo { grid-template-columns: 1fr !important; }
 .bajo { display:grid; grid-template-columns: 1fr 1fr; gap: 1.1vmin; align-items:stretch; }
 .bajo .hitos { display:flex; flex-direction:column; min-width:0; }
 #objs, .bajo #hitos { flex:1; display:flex; flex-direction:column; justify-content:space-evenly; }
@@ -105,7 +103,12 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 .ob b { display:block; font-size: 1.52vmin; font-weight:600; line-height:1.2; }
 .ob span { display:block; font-size: 1.24vmin; color: var(--grey); line-height:1.25; text-wrap:balance; }
 .ob em { font-style:normal; font-size: 1.24vmin; font-weight:600; color: var(--car); white-space:nowrap; }
-@media (max-width: 700px) { .bajo { grid-template-columns: 1fr; } .ob b { font-size: 2.72vmin; } .ob span, .ob em { font-size: 1.92vmin; } }
+/* móvil: objetivos e hitos a una columna y con el mismo tamaño de letra, legible */
+@media (max-width: 700px) { .bajo { grid-template-columns: 1fr; } .ob { padding: 0.8vmin 0; gap: 2vmin; } .ob b { font-size: 2.5vmin; } .ob span, .ob em { font-size: 1.92vmin; }
+  .hi { grid-template-columns: 15vmin 1fr; gap: 2vmin; padding: 0.8vmin 0; } .hd { font-size: 2.5vmin; } .hd span, .hi.hoy .hd span, .hi.manana .hd span { font-size: 1.92vmin; } .ht { font-size: 2.3vmin; } .ht span { font-size: 1.92vmin; } .hechos { font-size: 1.92vmin; } }
+
+/* 23/11/2026: fecha de entrega en naranja corporativo */
+.pe { color: var(--car); } .pem b { color: var(--car); }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -160,7 +163,7 @@ function render(d){
   var u=document.getElementById('upd'); if(u) u.textContent=fmt(d.actualizado);
   renderHitos(d);
 }
-function renderObjs(d){ var el=document.getElementById('objs'); if(!el) return false; var L=(d.objetivos&&d.objetivos.lista)||[]; if(!L.length){ el.parentNode.style.display='none'; return false; }
+function renderObjs(d){ var el=document.getElementById('objs'); if(!el) return false; var L=(d.objetivos&&d.objetivos.lista)||[]; if(!L.length){ el.parentNode.style.display='none'; el.parentNode.parentNode.className+=' solo'; return false; }
   var MM=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   el.innerHTML=L.map(function(o){ var f=''; if(o.fecha){ var a=String(o.fecha).split('-'); f=a.length>2?(+a[2])+' '+MM[+a[1]-1]:MM[+a[1]-1]+' '+a[0]; }
     return '<div class="ob"><div><b>'+esc(o.ambito)+'</b><span>'+esc(o.texto)+'</span></div>'+(f?'<em>'+f+'</em>':'')+'</div>'; }).join('');

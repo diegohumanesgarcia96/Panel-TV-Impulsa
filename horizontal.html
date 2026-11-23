@@ -106,6 +106,21 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 .pn .pl { display:flex; align-items:baseline; justify-content:space-between; gap:0.6em; text-wrap:nowrap; }
 .pn .pl a.mp { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .pem { display:block; flex:0 0 auto; white-space:nowrap; font-size:0.88em; } .pem i { display:none; } /*ENT-H-FIN*/
+
+/* Objetivos semanales + hitos (horizontal Madrid): la columna derecha se reparte entre los dos bloques */
+.lat { display:flex; flex-direction:column; gap: calc(1.4 * var(--u)); min-height:0; }
+.lat .hitos { flex:1 1 0; } .lat .hitos.obj { flex:0 0 auto; }
+#objs { display:flex; flex-direction:column; }
+.ob { display:grid; grid-template-columns: 1fr auto; gap: calc(1 * var(--u)); align-items:center; padding: calc(0.55 * var(--u)) 0; border-bottom:1px solid var(--line); }
+.ob:last-child { border-bottom:0; }
+.ob b { display:block; font-size: calc(1.62 * var(--u)); font-weight:600; line-height:1.2; }
+.ob span { display:block; font-size: calc(1.35 * var(--u)); color: var(--grey); line-height:1.25; text-wrap:balance; }
+.ob em { font-style:normal; font-size: calc(1.35 * var(--u)); font-weight:600; color: var(--car); white-space:nowrap; }
+.lat.cmp .ob { padding: calc(0.3 * var(--u)) 0; } .lat.cmp .hi { padding: calc(0.25 * var(--u)) 0; } .lat.cmp .hitos h2 { margin-bottom: calc(0.2 * var(--u)); } .lat.cmp .hitos { padding-top: calc(0.7 * var(--u)); padding-bottom: calc(0.7 * var(--u)); } .lat.cmp .ht span { display:none; }
+.lat #hitos { overflow:hidden; } .lat .ht { font-size: calc(1.62 * var(--u)); } .lat .hd { font-size: calc(1.9 * var(--u)); } .lat .hi { grid-template-columns: calc(8.6 * var(--u)) 1fr; padding: calc(0.5 * var(--u)) 0; }
+
+/* 23/11/2026: fecha de entrega en naranja corporativo */
+.pe { color: var(--car); } .pem b { color: var(--car); }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -117,7 +132,7 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 <div class="kpi"><div class="l">Promociones actuales</div><div class="v"><span id="k-prom">—</span><small id="k-col" class="blk"></small></div></div>
 </div>
 <div class="main"><div class="col" id="colA"></div><div class="col" id="colB"></div>
-<div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>
+<div class="lat"><div class="hitos obj"><h2>Objetivos semanales</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div></div>
 <footer><span>Impulsa Proyectos Inmobiliarios, S.L. · www.impulsaproyectos.com</span></footer>
 </div>
 <div id="msg">Cargando datos…</div>
@@ -162,16 +177,24 @@ function render(d){
   var u=document.getElementById('upd'); if(u) u.textContent=fmt(d.actualizado);
   renderHitos(d);
 }
+function renderObjs(d){ var el=document.getElementById('objs'); if(!el) return false; var L=(d.objetivos&&d.objetivos.lista)||[]; if(!L.length){ el.parentNode.style.display='none'; el.parentNode.parentNode.className+=' solo'; return false; }
+  var MM=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  el.innerHTML=L.map(function(o){ var f=''; if(o.fecha){ var a=String(o.fecha).split('-'); f=a.length>2?(+a[2])+' '+MM[+a[1]-1]:MM[+a[1]-1]+' '+a[0]; }
+    return '<div class="ob"><div><b>'+esc(o.ambito)+'</b><span>'+esc(o.texto)+'</span></div>'+(f?'<em>'+f+'</em>':'')+'</div>'; }).join('');
+  return true; }
 function renderHitos(d){
+  var conObjs=renderObjs(d);
   var t=hoy(), out="", hechos=[], prox=[];
   d.hitos.forEach(function(x){ var p=x.fecha.split("-"); var f=new Date(+p[0],+p[1]-1,+p[2]); var dias=Math.round((f-t)/864e5);
-    if(dias<0){ if(dias>=-3) hechos.push({x:x,f:f,dias:dias}); } else prox.push({x:x,f:f,dias:dias}); });
-  prox=prox.slice(0,6);
+    if(dias<0){ if(dias>=-3) hechos.push({x:x,f:f,dias:dias}); } else if(!(conObjs&&x.objetivo)) prox.push({x:x,f:f,dias:dias}); });
+  prox=prox.slice(0,conObjs?5:6);
   prox.forEach(function(r){ var cls=r.dias===0?'hoy':(r.dias===1?'manana':''); var lab=r.dias<0?'hecho':(r.dias===0?'hoy':(r.dias===1?'mañana':r.dias+' d'));
     out+='<div class="hi '+cls+'"><div class="hd">'+r.f.getDate()+' '+MES[r.f.getMonth()]+'<span>'+lab+'</span></div><div class="ht">'+esc(r.x.hito)+'<span>'+esc(r.x.ambito)+'</span></div></div>'; });
   if(hechos.length){ out+='<div class="hechos">Hecho esta semana: '+hechos.map(function(r){ return esc(r.x.ambito)+' · '+r.f.getDate()+' '+MES[r.f.getMonth()]; }).join('  ·  ')+'</div>'; }
   document.getElementById('hitos').innerHTML=out||'<div class="hi"><div class="ht">Sin hitos próximos</div></div>';
+  ajustaLat(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaLat);
 }
+function ajustaLat(){ var h=document.getElementById('hitos'); if(!h||!document.getElementById('objs')) return; var hs=h.querySelectorAll('.hi'), i=hs.length-1; while(i>=4 && h.scrollHeight>h.clientHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } if(h.scrollHeight>h.clientHeight+1){ h.parentNode.parentNode.className+=' cmp'; } }
 function horaEn(tz,d){ try{ return new Intl.DateTimeFormat('es-ES',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(d); }catch(e){ return p2(d.getHours())+':'+p2(d.getMinutes()); } }
 function reloj(){ var d=new Date(); document.getElementById('hora').textContent=horaEn('Europe/Madrid',d); document.getElementById('hora-co').textContent=horaEn('America/Bogota',d);
   document.getElementById('fecha').textContent=DIA[d.getDay()]+' '+d.getDate()+' '+MES[d.getMonth()]+' '+d.getFullYear();

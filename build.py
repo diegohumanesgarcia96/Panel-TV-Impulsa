@@ -5,7 +5,7 @@ Uso: python3 build.py   → escribe general.html y general-horizontal.html"""
 import re
 # ---------- vertical general ----------
 v=open('index.html').read()
-v=v.replace('<div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div>\n','')
+_o='<div class="bajo"><div class="hitos obj"><h2>Objetivos semanales</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>\n'; assert _o in v; v=v.replace(_o,'')
 v=v.replace("document.getElementById('hitos').innerHTML=","var _h=document.getElementById('hitos'); if(_h) _h.innerHTML=")
 v=v.replace('<meta name="claude:viewport-fit-sides" content="cover">','<meta name="claude:viewport-fit-sides" content="cover"><!-- versión general: sin hitos -->')
 # sin hitos sobra altura: secciones proporcionales al nº de filas, filas repartidas y tipografía algo mayor
@@ -21,12 +21,12 @@ for a,c in [(".pn { font-size: 1.68vmin;",".pn { font-size: 1.95vmin;"),(".pn .p
             ("section h2 { margin:0 0 0.33vmin; font-size: 1.92vmin;","section h2 { margin:0 0 0.5vmin; font-size: 2.2vmin;"),("section h2 span { color: var(--grey); text-transform:none; letter-spacing:0; font-weight:500; font-size: 1.45vmin; }","section h2 span { color: var(--grey); text-transform:none; letter-spacing:0; font-weight:500; font-size: 1.6vmin; }"),
             (".pb { height: 0.87vmin;",".pb { height: 1vmin;"),("grid-template-columns: 1fr 15.19vmin 19.17vmin 8.79vmin;","grid-template-columns: 1fr 16.5vmin 19.17vmin 9.5vmin;")]:
     assert a in v, a; v=v.replace(a,c)
-assert 'id="hitos"' not in v
+assert 'id="hitos"' not in v and 'id="objs"' not in v
 _r="OTRA='horizontal.html'"; assert _r in v; v=v.replace(_r,"OTRA='general-horizontal.html'")
 open('general.html','w').write(v)
 # ---------- horizontal general: 3 columnas de zonas ----------
 h=open('horizontal.html').read()
-h=h.replace('<div class="main"><div class="col" id="colA"></div><div class="col" id="colB"></div>\n<div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>',
+h=h.replace('<div class="main"><div class="col" id="colA"></div><div class="col" id="colB"></div>\n<div class="lat"><div class="hitos obj"><h2>Objetivos semanales</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div></div>',
             '<div class="main"><div class="col" id="colA"></div><div class="col" id="colB"></div><div class="col" id="colC"></div></div>')
 h=h.replace("grid-template-columns: 1fr 1fr 0.55fr;","grid-template-columns: 1fr 1fr 1fr;")
 # nombres a 2 líneas (columnas más estrechas, pero hay altura de sobra)
@@ -41,7 +41,7 @@ new="""  var tot=0; secs.forEach(function(s){tot+=s.n;}); var cols=[[],[],[]], w
   document.getElementById('colA').innerHTML=cols[0].join(''); document.getElementById('colB').innerHTML=cols[1].join(''); document.getElementById('colC').innerHTML=cols[2].join('');"""
 h=h.replace(old,new)
 h=h.replace("document.getElementById('hitos').innerHTML=","var _h=document.getElementById('hitos'); if(_h) _h.innerHTML=")
-assert 'id="hitos"' not in h and 'colC' in h
+assert 'id="hitos"' not in h and 'id="objs"' not in h and 'colC' in h
 # 20/11/2026: con nombres a 2 líneas el recorte de letras se evita con más interlínea (no con relleno, que dejaría ver la 3ª línea)
 _a=".pn .pt { padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }"
 assert _a in h; h=h.replace(_a,".pn .pt { line-height:1.4; padding-top:0.1em; margin-top:-0.22em; padding-bottom:0.1em; margin-bottom:-0.04em; }")

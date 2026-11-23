@@ -107,10 +107,7 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 .pn .pl a.mp { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .pem { display:block; flex:0 0 auto; white-space:nowrap; font-size:0.88em; } .pem i { display:none; } /*ENT-H-FIN*/
 
-/* PRUEBA: fecha de entrega en naranja corporativo */
-.pe { color: var(--car); } .pem b { color: var(--car); }
-
-/* PRUEBA objetivos + hitos (horizontal Madrid): la columna derecha se reparte entre los dos bloques */
+/* Objetivos semanales + hitos (horizontal Madrid): la columna derecha se reparte entre los dos bloques */
 .lat { display:flex; flex-direction:column; gap: calc(1.4 * var(--u)); min-height:0; }
 .lat .hitos { flex:1 1 0; } .lat .hitos.obj { flex:0 0 auto; }
 #objs { display:flex; flex-direction:column; }
@@ -121,6 +118,9 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 .ob em { font-style:normal; font-size: calc(1.35 * var(--u)); font-weight:600; color: var(--car); white-space:nowrap; }
 .lat.cmp .ob { padding: calc(0.3 * var(--u)) 0; } .lat.cmp .hi { padding: calc(0.25 * var(--u)) 0; } .lat.cmp .hitos h2 { margin-bottom: calc(0.2 * var(--u)); } .lat.cmp .hitos { padding-top: calc(0.7 * var(--u)); padding-bottom: calc(0.7 * var(--u)); } .lat.cmp .ht span { display:none; }
 .lat #hitos { overflow:hidden; } .lat .ht { font-size: calc(1.62 * var(--u)); } .lat .hd { font-size: calc(1.9 * var(--u)); } .lat .hi { grid-template-columns: calc(8.6 * var(--u)) 1fr; padding: calc(0.5 * var(--u)) 0; }
+
+/* 23/11/2026: fecha de entrega en naranja corporativo */
+.pe { color: var(--car); } .pem b { color: var(--car); }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -179,7 +179,7 @@ function render(d){
   var u=document.getElementById('upd'); if(u) u.textContent=fmt(d.actualizado);
   renderHitos(d);
 }
-function renderObjs(d){ var el=document.getElementById('objs'); if(!el) return false; var L=(d.objetivos&&d.objetivos.lista)||[]; if(!L.length){ el.parentNode.style.display='none'; return false; }
+function renderObjs(d){ var el=document.getElementById('objs'); if(!el) return false; var L=(d.objetivos&&d.objetivos.lista)||[]; if(!L.length){ el.parentNode.style.display='none'; el.parentNode.parentNode.className+=' solo'; return false; }
   var MM=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   el.innerHTML=L.map(function(o){ var f=''; if(o.fecha){ var a=String(o.fecha).split('-'); f=a.length>2?(+a[2])+' '+MM[+a[1]-1]:MM[+a[1]-1]+' '+a[0]; }
     return '<div class="ob"><div><b>'+esc(o.ambito)+'</b><span>'+esc(o.texto)+'</span></div>'+(f?'<em>'+f+'</em>':'')+'</div>'; }).join('');
