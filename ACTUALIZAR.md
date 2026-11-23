@@ -60,3 +60,4 @@ Los paneles se consideran definitivos. Cualquier cambio (diseño, texto o dato) 
 
 ## 23/11/2026 13:38 · Barra de ventas con las cifras dentro (solo en prueba)
 - Petición de Miguel: vendidas y restantes dentro de la barra, sin el número de la derecha. regen_prueba.py añade `barra()` y el CSS `.pb2` a las cuatro prueba*.html (ocupa las dos columnas, barra + número). Técnica: capa gris con texto oscuro y encima el relleno naranja recortado con el mismo texto en blanco; no usa JS de ajuste. Vendidas a la izquierda, disponibles a la derecha (no se pinta si es 0). La fila de terceros de Sevilla conserva su cifra a la derecha. Pendiente ok de Diego.
+- 23/11 13:45: prueba de barras v2 — por defecto vendidas (izq.) y TOTAL (dcha.); con `?quedan` vendidas y las que quedan. Cada cifra va entera de un color (`ajustaBarras()` la recoloca si el borde del naranja la cortaría). Auditado en 52 combinaciones.

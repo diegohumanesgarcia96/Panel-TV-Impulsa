@@ -2,7 +2,7 @@
 <script>/* auto-orientacion 20/11/2026: el enlace compartido (versión horizontal) abre la vertical en teléfonos y pantallas verticales, y vuelve a la horizontal si la pantalla es apaisada */
 (function(){ var ESTA='h', OTRA='prueba-general.html'; /* enlace compartido: siempre elige versión según la pantalla */
   function quiere(){ var w=window.innerWidth, h=window.innerHeight; if (!w||!h) return ESTA; var movil=Math.min(w,h)<=700; return (movil||h>=w)?'v':'h'; }
-  function mira(){ if (quiere()!==ESTA) location.replace(OTRA+'?auto'); }
+  function mira(){ if (quiere()!==ESTA) location.replace(OTRA+'?auto'+(/[?&]quedan/.test(location.search)?'&quedan':'')); }
   mira(); var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(mira,400); });
 })();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panel Grupo Impulsa</title>
@@ -123,13 +123,13 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 /* logos de zona: todos arrancan en la misma vertical (.zn con ancho fijo) */
 .zn { font-style:normal; display:inline-block; min-width:6.5em; } .zl { height:calc(1.23em * var(--k)); width:auto; flex:0 0 auto; align-self:center; margin:-0.5em auto -0.5em 0.47em; }
 @media (prefers-color-scheme: dark) { .zl { filter: brightness(0) invert(1) opacity(.8); } }
-/* barra de ventas con cifras dentro: capa gris con texto oscuro y, encima, el relleno naranja recortado con el mismo texto en blanco */
-.pb2 { grid-column: span 2; position:relative; height:calc(2.5 * var(--u)); border-radius:99px; background: var(--line); overflow:hidden; font-size:calc(1.62 * var(--u)); font-weight:700; line-height:1; }
-.pb2 .bt { position:absolute; top:0; bottom:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:0 calc(1 * var(--u)); box-sizing:border-box; color: var(--fg); white-space:nowrap; }
-.pb2 .bt b:last-child { color: var(--grey); font-weight:600; }
-.pb2 i { position:absolute; top:0; bottom:0; left:0; width:calc(var(--p) * 1%); background: var(--car); overflow:hidden; font-style:normal; }
-.pb2 i .bt { width:calc(100% * 100 / var(--p)); color:#fff; } .pb2 i .bt b:last-child { color:#fff; }
-@media (max-width:700px){ .pb2 { height:4.4vmin; font-size:2.5vmin; } .pb2 .bt { padding:0 1.6vmin; } }
+/* barra de ventas con cifras dentro */
+.pb2 { grid-column: span 2; position:relative; height:calc(2.5 * var(--u)); border-radius:99px; background: var(--line); overflow:hidden; font-size:calc(1.62 * var(--u)); line-height:1; }
+.pb2 i { position:absolute; top:0; bottom:0; left:0; background: var(--car); }
+.pb2 b { position:absolute; top:50%; transform:translateY(-50%); white-space:nowrap; font-weight:700; color: var(--fg); }
+.pb2 .a { left:calc(1 * var(--u)); } .pb2 .q { right:calc(1 * var(--u)); color: var(--grey); font-weight:600; }
+.pb2 b.in { color:#fff; }
+@media (max-width:700px){ .pb2 { height:4.4vmin; font-size:2.5vmin; } .pb2 .a { left:1.6vmin; } .pb2 .q { right:1.6vmin; } }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -162,7 +162,15 @@ var MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','di
 function entrega(p){ if(!p.entrega) return null; var a=String(p.entrega).split('-'), f=MESES[(+a[1]||1)-1]+'\u00a0'+a[0], r=+p.retraso_meses||0, late=r>0?' late':'';
   var et=r>0?('Retraso '+r+(r==1?' mes':' meses')):(p.entrega_nota?esc(p.entrega_nota):'');
   return { d:'<div class="pe'+late+'">'+(et?'<small>'+et+'</small>':'')+f+'</div>', m:'<span class="pem'+late+'"><i> · </i>'+(r>0?'<b>Retraso '+r+(r==1?' mes':' meses')+'</b> · '+f:(p.entrega_nota?esc(p.entrega_nota)+' ':'')+'<b>'+f+'</b>')+'</span>' }; }
-function barra(pct,s,v){ var p=Math.max(0,Math.min(100,Math.round(pct))), ns=+String(s).replace(/\./g,''), nv=+String(v).replace(/\./g,''), q=Math.max(0,nv-ns); var t='<div class="bt"><b>'+fmtN(ns)+'</b><b>'+(q>0?fmtN(q):'')+'</b></div>'; return '<div class="pb2" style="--p:'+p+'" title="'+fmtN(ns)+' vendidas · '+fmtN(q)+' disponibles">'+t+(p>0?'<i>'+t+'</i>':'')+'</div>'; }
+var QUEDAN=/[?&]quedan/.test(location.search);
+function barra(pct,s,v){ var ns=+String(s).replace(/\./g,''), nv=+String(v).replace(/\./g,''), q=Math.max(0,nv-ns), p=nv>0?Math.max(0,Math.min(100,ns/nv*100)):0, d=QUEDAN?(q>0?fmtN(q):''):fmtN(nv);
+  return '<div class="pb2" data-p="'+p+'" title="'+fmtN(ns)+' vendidas de '+fmtN(nv)+' · '+fmtN(q)+' disponibles"><i style="width:'+p+'%"></i><b class="a">'+fmtN(ns)+'</b><b class="q">'+d+'</b></div>'; }
+function ajustaBarras(){ var L=document.querySelectorAll('.pb2'); for(var k=0;k<L.length;k++){ var x=L[k], W=x.clientWidth; if(!W) continue; var a=x.querySelector('.a'), q=x.querySelector('.q'); a.style.left=''; q.style.right=''; a.className='a'; q.className='q';
+    var pad=parseFloat(getComputedStyle(a).left)||0, f=W*(+x.getAttribute('data-p'))/100, wa=a.offsetWidth, wq=q.textContent?q.offsetWidth:0;
+    if(f>=pad+wa+pad*0.5){ a.className='a in'; } else { a.style.left=Math.max(pad,f+pad*0.6)+'px'; }
+    if(wq){ if(W-f>=pad+wq+pad*0.5){ } else if(f>=W-pad*0.4){ q.className='q in'; } else { q.className='q in'; q.style.right=(W-f+pad*0.6)+'px'; } } } }
+var _rdB=render; render=function(d){ _rdB(d); ajustaBarras(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaBarras); };
+window.addEventListener('resize',function(){ setTimeout(ajustaBarras,60); });
 function fila(nombre,loc,fase,cls,pct,s,v,full,maps,ent){
   return '<div class="pr"><div class="pn"><div class="pnt"><span class="pt">'+nomb(nombre)+'</span><span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div>'+barra(pct,s,v)+'</div>';
 }
