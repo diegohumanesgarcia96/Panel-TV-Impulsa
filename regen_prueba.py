@@ -3,7 +3,6 @@ FT="function filaT(t){ return '<div class=\"pr\"><div class=\"pn\"><div class=\"
 M={'index.html':('prueba.html',"OTRA='horizontal.html'","OTRA='prueba-horizontal.html'"),'horizontal.html':('prueba-horizontal.html',"OTRA='index.html'","OTRA='prueba.html'"),'general.html':('prueba-general.html',"OTRA='general-horizontal.html'","OTRA='prueba-general-horizontal.html'"),'general-horizontal.html':('prueba-general-horizontal.html',"OTRA='general.html'","OTRA='prueba-general.html'")}
 for r,(p,a,b) in M.items():
     s=open(r).read(); assert a in s; s=s.replace(a,b)
-    if r in('index.html','horizontal.html'): assert s.count('var SOLO_OBJ=false;')==1; s=s.replace('var SOLO_OBJ=false;','var SOLO_OBJ=true;')
     if r!='index.html':
         assert s.count('function render(d){')==1; s=s.replace('function render(d){',FT)
         if 'horizontal' in r:
