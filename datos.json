@@ -142,7 +142,8 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=41.6120%2C-0.9440",
-     "maps_precision": "zona"
+     "maps_precision": "zona",
+     "entrega": "2029-07"
     }
    ]
   },
@@ -159,7 +160,8 @@
      "obra": true,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=Carrer%20de%20Carme%20Chac%C3%B3n%2C%20Viladecans",
-     "maps_precision": "calle"
+     "maps_precision": "calle",
+     "entrega": "2027-01"
     },
     {
      "nombre": "Eixample Sud · Fem Ciutat",

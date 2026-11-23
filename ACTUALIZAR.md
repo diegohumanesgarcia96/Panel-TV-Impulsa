@@ -45,3 +45,4 @@ Cada promoción puede llevar en datos.json los campos `maps` (URL de Google Maps
 
 ## REGLA (Diego, 23/11/2026 11:53): auditoría con cada cambio
 Los paneles se consideran definitivos. Cualquier cambio (diseño, texto o dato) va seguido de auditoría antes de darlo por hecho: audE.js (41 pantallas, recortes/solapes/encaje), ob3.js (objetivos y agenda, ≥4 hitos), fun.js (cifras, enlaces, sin datos, 1-dic, naranja), ori4.js (vertical/horizontal) y captura visual revisada. Se informa a Diego del resultado y de los fallos corregidos.
+- 23/11 11:55: entregas Arcosur E-38 jul 2029 y Llevant Parc ene 2027 (dato de Diego). Auditado.
