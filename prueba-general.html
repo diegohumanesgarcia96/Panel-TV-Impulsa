@@ -85,6 +85,17 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 .pn { padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }
 @media (max-width:700px) { .pn { white-space:normal; overflow:visible; text-wrap:balance; } }
 .nb { white-space:nowrap; }
+
+/* 23/11/2026 (prueba): entrega prevista y retraso */
+.pn { display:flex; align-items:center; justify-content:space-between; gap:0.9em; }
+.pnt { min-width:0; flex:1 1 auto; overflow:hidden; text-overflow:ellipsis; padding-bottom:0.22em; margin-bottom:-0.22em; padding-top:0.2em; margin-top:-0.2em; }
+.pe { flex:0 0 auto; text-align:right; white-space:nowrap; font-size:0.84em; font-weight:600; line-height:1.15; color:var(--fg); }
+.pe small { display:block; font-size:0.64em; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--grey); margin-bottom:0.25em; }
+.pe.late, .pe.late small { color:var(--bad); }
+.pem { display:none; }
+@media (max-width:700px){ .pn { display:block; } .pnt { overflow:visible; } .pe { display:none; } .pem { display:inline; } .pem.late { color:var(--bad); font-weight:600; } }
+
+.pem i { font-style:normal; } .pem b { font-weight:600; color:var(--fg); } .pem.late, .pem.late b { color:var(--bad); }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -112,21 +123,26 @@ function fmt(iso){ var p=iso.split("-"); return p[2]+"/"+p[1]+"/"+p[0]; }
 function obraFill(fase,cls){ if(cls!=='ok') return ''; var m=/(\d+(?:[.,]\d+)?)\s*%/.exec(fase); if(!m) return ''; var n=Math.max(0,Math.min(100,parseFloat(m[1].replace(',','.')))); return ' style="--av:'+n+'%"'; }
 var PIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
 function nomb(n){ return esc(n).split(' · ').map(function(x){return '<span class="nb">'+x+'</span>';}).join('\u00a0· '); }
-function fila(nombre,loc,fase,cls,pct,s,v,full,maps){
-  return '<div class="pr"><div class="pn">'+nomb(nombre)+'<span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+'</span></div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
+/* 23/11/2026 (prueba): fecha de entrega prevista y aviso de retraso entre el nombre y la fase */
+var MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+function entrega(p){ if(!p.entrega) return null; var a=String(p.entrega).split('-'), f=MESES[(+a[1]||1)-1]+'\u00a0'+a[0], r=+p.retraso_meses||0, late=r>0?' late':'';
+  var et=r>0?('Retraso +'+r+(r==1?' mes':' meses')):('Entrega'+(p.entrega_nota?' '+esc(p.entrega_nota):''));
+  return { d:'<div class="pe'+late+'"><small>'+et+'</small>'+f+'</div>', m:'<span class="pem'+late+'"><i> · </i>'+(r>0?'<b>Retraso +'+r+(r==1?' mes':' meses')+'</b> · '+f:'Entrega'+(p.entrega_nota?' '+esc(p.entrega_nota):'')+' <b>'+f+'</b>')+'</span>' }; }
+function fila(nombre,loc,fase,cls,pct,s,v,full,maps,ent){
+  return '<div class="pr"><div class="pn"><div class="pnt">'+nomb(nombre)+'<span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
 }
-function filaT(t){ return '<div class="pr"><div class="pn"><span class="pt">'+nomb(t.nombre)+'</span><span class="pl">'+esc(t.localidad)+'</span></div><div class="pf">'+esc(t.fase||'Comercialización')+'</div><div></div><div class="pv">'+fmtN(t.viviendas)+'<span>\u00a0viv.</span></div></div>'; }
+function filaT(t){ return '<div class="pr"><div class="pn"><div class="pnt"><span class="pt">'+nomb(t.nombre)+'</span><span class="pl">'+esc(t.localidad)+'</span></div></div><div class="pf">'+esc(t.fase||'Comercialización')+'</div><div></div><div class="pv">'+fmtN(t.viviendas)+'<span>\u00a0viv.</span></div></div>'; }
 function render(d){
   var viv=0,vend=0,obra=0,nprom=0,h="";
   d.zonas.forEach(function(z){
     var tv=0,ts=0,rows="";
     z.promos.forEach(function(p){ tv+=p.viviendas; ts+=p.vendidas; viv+=p.viviendas; vend+=p.vendidas; if(p.obra) obra+=p.viviendas; if(!p.espera) nprom++;
-      rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas,p.viviendas>0&&p.vendidas>=p.viviendas,p.maps); });
+      rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas,p.viviendas>0&&p.vendidas>=p.viviendas,p.maps,entrega(p)); });
     var nt=0; if(z.terceros){ rows+=filaT(z.terceros); nt=1; }
     h+='<section style="flex:'+(z.promos.length+nt+1.3)+'"><h2>'+esc(z.zona)+'<span>'+fmtN(tv)+' viv. · '+fmtN(ts)+' vendidas</span></h2><div class="rows">'+rows+'</div></section>';
   });
   var c="";
-  d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv.',p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE',false,p.maps); });
+  d.colombia.forEach(function(p){ c+=fila(p.nombre,(p.localidad?p.localidad+' · ':'')+p.viviendas+' viv.',p.estado,(p.obra_viv?'ok':''),p.pe?Math.min(100,p.ventas/p.pe*100):0,p.ventas,p.pe+' PE',false,p.maps,entrega(p)); });
   h+='<section style="flex:'+(d.colombia.length+1.3)+'"><h2>Colombia<span>Hábitat Colombia · ventas sobre punto de equilibrio</span></h2><div class="rows">'+c+'</div></section>';
   document.getElementById('zones').innerHTML=h;
   var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=fmtN(viv)+' ESP + '+fmtN(vc)+' COL'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=fmtN(vend)+' ESP + '+fmtN(sc)+' COL';

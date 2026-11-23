@@ -14,7 +14,9 @@
      "obra": true,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.345441%2C-3.5174866",
-     "maps_precision": "exacta"
+     "maps_precision": "exacta",
+     "entrega": "2027-01",
+     "retraso_meses": 1
     },
     {
      "nombre": "Los Molinos I · Paradiso",
@@ -26,7 +28,9 @@
      "obra": true,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=40.3211028%2C-3.6990408",
-     "maps_precision": "exacta"
+     "maps_precision": "exacta",
+     "entrega": "2027-12",
+     "retraso_meses": 2
     },
     {
      "nombre": "Los Montecillos · Kitara",
@@ -156,7 +160,8 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=Eixample%20Sud%2C%20El%20Prat%20de%20Llobregat",
-     "maps_precision": "zona"
+     "maps_precision": "zona",
+     "entrega": "2029-03"
     },
     {
      "nombre": "Cerdanyola · Millor Vallès",
@@ -168,7 +173,8 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=Carretera%20de%20Barcelona%2C%20Cerdanyola%20del%20Vall%C3%A8s",
-     "maps_precision": "zona"
+     "maps_precision": "zona",
+     "entrega": "2029-09"
     },
     {
      "nombre": "Parc de l'Alba R.21-01 · Fem Ciutat",
@@ -209,7 +215,8 @@
      "obra": true,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=Razo%20de%20Ugena%2C%20Palomares%20del%20R%C3%ADo%2C%20Sevilla",
-     "maps_precision": "zona"
+     "maps_precision": "zona",
+     "entrega": "2028-03"
     },
     {
      "nombre": "Alquería de Ugena F2",
@@ -221,7 +228,8 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=Razo%20de%20Ugena%2C%20Palomares%20del%20R%C3%ADo%2C%20Sevilla",
-     "maps_precision": "zona"
+     "maps_precision": "zona",
+     "entrega": "2028-12"
     },
     {
      "nombre": "Novo Pítamo Residencial",
@@ -233,7 +241,8 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=P%C3%ADtamo%20Sur%2C%20Sevilla",
-     "maps_precision": "zona"
+     "maps_precision": "zona",
+     "entrega": "2029-04"
     }
    ],
    "terceros": {
@@ -294,7 +303,9 @@
    "obra_pct": 16,
    "estado": "T1 en obra · 16 %",
    "maps": "https://www.google.com/maps?cid=11262495475843225376",
-   "maps_precision": "exacta"
+   "maps_precision": "exacta",
+   "entrega": "2027-10",
+   "entrega_nota": "T1"
   },
   {
    "nombre": "Cerasus Sexta Entrada",
