@@ -122,7 +122,7 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 <div class="kpi"><div class="l">Promociones actuales</div><div class="v"><span id="k-prom">—</span><small id="k-col" class="blk"></small></div></div>
 </div>
 <div class="zones" id="zones"></div>
-<div class="bajo"><div class="hitos obj"><h2>Objetivos semanales</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>
+<div class="bajo"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>
 <footer><span>Impulsa Proyectos Inmobiliarios, S.L. · www.impulsaproyectos.com</span></footer>
 </div>
 <div id="msg">Cargando datos…</div>
@@ -165,7 +165,7 @@ function render(d){
   var u=document.getElementById('upd'); if(u) u.textContent=fmt(d.actualizado);
   renderHitos(d);
 }
-var SOLO_OBJ=true; /* true = solo objetivos, sin próximos hitos */
+var SOLO_OBJ=false; /* true = solo objetivos, sin próximos hitos */
 function renderObjs(d){ var el=document.getElementById('objs'); if(!el) return false; var L=(d.objetivos&&d.objetivos.lista)||[]; if(!L.length){ el.parentNode.style.display='none'; el.parentNode.parentNode.className+=' solo'; return false; }
   var MM=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   el.innerHTML=L.map(function(o){ var f=''; if(o.fecha){ var a=String(o.fecha).split('-'); f=a.length>2?(+a[2])+' '+MM[+a[1]-1]:MM[+a[1]-1]+' '+a[0]; }
