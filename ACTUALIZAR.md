@@ -49,3 +49,9 @@ Los paneles se consideran definitivos. Cualquier cambio (diseño, texto o dato) 
 
 ## 23/11/2026 12:07 · Logos por zona (solo en prueba)
 - Carpeta `logos/` (madrid, aragon, cataluna, andalucia, colombia .png (Colombia = símbolo HC gris-naranja + nombre en gris, compuesto en horizontal a partir de 2.1.png y 1.5.png), 160 px de alto, fondo transparente; origen: Escritorio › LOGOS, solo lectura). regen_prueba.py añade `logoZ()` y el CSS `.zl` a las cuatro prueba*.html. A color por defecto; con `?gris` en la dirección, en gris. En modo oscuro salen en blanco. Auditoría 12:15 (Diego vio fallo): logos alineados en columna (`.zn` min-width 6.5em), tamaños igualados (Solucions 0.92, Colombia 0.84) y `?gris` conservado al redirigir en móvil. Pendiente decisión de Diego (color/gris, Madrid sí/no, Solucions o Fem Ciutat).
+
+## 23/11/2026 12:23 · Logos por zona — DEFINITIVO (a color)
+- En las fuentes index.html y horizontal.html (y por build.py en los generales): `logoZ()` + `<i class="zn">` (ancho fijo 6.5em para que todos los logos arranquen en la misma vertical) + `.zl` (alto 1.23em × factor por logo: Solucions 0.92, Colombia 0.84). Modo oscuro: logos en blanco. Si un logo no carga, la cabecera queda como antes (alt vacío).
+- Archivos en `logos/` (madrid, aragon, cataluna, andalucia, colombia). Colombia = símbolo HC + nombre en gris. Origen: Escritorio › LOGOS (solo lectura).
+- Añadir zona nueva: poner su PNG (160 px de alto, fondo transparente) en `logos/` y añadirla al mapa `M` de `logoZ()` en las dos fuentes.
+- Auditoría final 23/11: 42 pantallas de logos + 41 generales + 14 de objetivos/agenda + funcionamiento + orientación + robustez (re-render, sin logos, modo oscuro, zoom 125/150 %): 0 fallos.

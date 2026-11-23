@@ -113,6 +113,9 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 
 /* 23/11/2026: fecha de entrega en naranja corporativo */
 .pe { color: var(--car); } .pem b { color: var(--car); }
+/* logos de zona: todos arrancan en la misma vertical (.zn con ancho fijo) */
+.zn { font-style:normal; display:inline-block; min-width:6.5em; } .zl { height:calc(1.23em * var(--k)); width:auto; flex:0 0 auto; align-self:center; margin:-0.5em auto -0.5em 0.47em; }
+@media (prefers-color-scheme: dark) { .zl { filter: brightness(0) invert(1) opacity(.8); } }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -148,17 +151,18 @@ function entrega(p){ if(!p.entrega) return null; var a=String(p.entrega).split('
 function fila(nombre,loc,fase,cls,pct,s,v,full,maps,ent){
   return '<div class="pr"><div class="pn"><div class="pnt">'+nomb(nombre)+'<span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
 }
+function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',0.92],'Andalucía':['andalucia',1],'Colombia':['colombia',0.84]}, m=M[z]; return m?'<img class="zl" alt="" style="--k:'+m[1]+'" src="logos/'+m[0]+'.png">':''; } /* logo de la empresa junto al nombre de la zona (23/11/2026) */
 function render(d){
   var viv=0,vend=0,obra=0,nprom=0,h="";
   d.zonas.forEach(function(z){
     var tv=0,ts=0,rows="";
     z.promos.forEach(function(p){ tv+=p.viviendas; ts+=p.vendidas; viv+=p.viviendas; vend+=p.vendidas; if(p.obra) obra+=p.viviendas; if(!p.espera) nprom++;
       rows+=fila(p.nombre,p.localidad,p.fase,p.cls,p.viviendas?p.vendidas/p.viviendas*100:0,p.vendidas,p.viviendas,p.viviendas>0&&p.vendidas>=p.viviendas,p.maps,entrega(p)); });
-    h+='<section style="flex:'+(z.promos.length+1.3)+'"><h2>'+esc(z.zona)+'<span>'+fmtN(tv)+' viv. · '+fmtN(ts)+' vendidas</span></h2><div class="rows">'+rows+'</div></section>';
+    h+='<section style="flex:'+(z.promos.length+1.3)+'"><h2><i class="zn">'+esc(z.zona)+'</i>'+logoZ(z.zona)+'<span>'+fmtN(tv)+' viv. · '+fmtN(ts)+' vendidas</span></h2><div class="rows">'+rows+'</div></section>';
   });
   var c="";
   var ctv=0, cts=0; d.colombia.forEach(function(p){ ctv+=p.viviendas; cts+=(p.ventas||0); c+=fila(p.nombre,p.localidad||'',p.estado,(p.obra_viv?'ok':''),p.viviendas?Math.min(100,p.ventas/p.viviendas*100):0,p.ventas,fmtN(p.viviendas),false,p.maps,entrega(p)); });
-  h+='<section style="flex:'+(d.colombia.length+1.3)+'"><h2>Colombia<span>'+fmtN(ctv)+' viv. · '+fmtN(cts)+' vendidas</span></h2><div class="rows">'+c+'</div></section>';
+  h+='<section style="flex:'+(d.colombia.length+1.3)+'"><h2><i class="zn">Colombia</i>'+logoZ('Colombia')+'<span>'+fmtN(ctv)+' viv. · '+fmtN(cts)+' vendidas</span></h2><div class="rows">'+c+'</div></section>';
   document.getElementById('zones').innerHTML=h;
   var vc=0, oc=0, sc=0; d.colombia.forEach(function(p){ vc+=p.viviendas; oc+=(p.obra_viv||0); sc+=(p.ventas||0); }); document.getElementById('k-tot').textContent=fmtN(viv+vc); document.getElementById('k-split').textContent=fmtN(viv)+' ESP + '+fmtN(vc)+' COL'; document.getElementById('k-vend').textContent=fmtN(vend+sc); document.getElementById('k-vend-split').textContent=fmtN(vend)+' ESP + '+fmtN(sc)+' COL';
   document.getElementById('k-pct').textContent=(viv+vc)?Math.round((vend+sc)/(viv+vc)*100)+' %':''; document.getElementById('k-obra').textContent=fmtN(obra+oc); document.getElementById('k-obra-split').textContent=fmtN(obra)+' ESP + '+fmtN(oc)+' COL';
