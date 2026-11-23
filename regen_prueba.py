@@ -14,3 +14,4 @@ for r,(p,a,b) in M.items():
             s=s.replace(x,"    var nt=0; if(z.terceros){ rows+=filaT(z.terceros); nt=1; }\n    h+='<section style=\"flex:'+(z.promos.length+nt+1.3)+'\">")
     open(p,'w').write(s)
 print('pruebas regeneradas')
+exec(open('prueba_objetivos.py').read())

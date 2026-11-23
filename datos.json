@@ -419,7 +419,8 @@
    "fecha": "2026-11-30",
    "hito": "Pago a Azora del 2º 20 % de Valdecarros (tras aprobar Akela el PBC)",
    "ambito": "Valdecarros",
-   "tipo": "Financiación"
+   "tipo": "Financiación",
+   "objetivo": true
   },
   {
    "fecha": "2026-12-14",
@@ -449,7 +450,8 @@
    "fecha": "2027-01-31",
    "hito": "Entrega real Rivas RU1 (enero 2027)",
    "ambito": "Rivas RU1",
-   "tipo": "Obra"
+   "tipo": "Obra",
+   "objetivo": true
   },
   {
    "fecha": "2027-01-31",
@@ -487,5 +489,36 @@
    "ambito": "Molinos I",
    "tipo": "Obra"
   }
- ]
+ ],
+ "objetivos": {
+  "fuente": "Acta de coordinadores 19/11/2026",
+  "lista": [
+   {
+    "ambito": "Valdecarros",
+    "texto": "Pagar el 20 % a vendedores + PBC",
+    "fecha": "2026-11-30"
+   },
+   {
+    "ambito": "Canal 65",
+    "texto": "Reservas + financiación + convenio con Metro"
+   },
+   {
+    "ambito": "Los Montecillos",
+    "texto": "Financiación + obra nueva + compraventas + mejoras"
+   },
+   {
+    "ambito": "Los Molinos II",
+    "texto": "Licencia + financiación"
+   },
+   {
+    "ambito": "Zaragoza · E-38",
+    "texto": "Constitución de la cooperativa"
+   },
+   {
+    "ambito": "Rivas RU1",
+    "texto": "Entrega de viviendas",
+    "fecha": "2027-01"
+   }
+  ]
+ }
 }
