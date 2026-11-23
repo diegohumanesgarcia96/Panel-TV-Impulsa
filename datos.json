@@ -330,7 +330,8 @@
    "obra_pct": 0,
    "estado": "Preventa 1ª fase",
    "maps": "https://www.google.com/maps?cid=8832604443657804504",
-   "maps_precision": "exacta"
+   "maps_precision": "exacta",
+   "entrega": "2031-12"
   }
  ],
  "hitos": [

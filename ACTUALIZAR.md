@@ -56,3 +56,4 @@ Los paneles se consideran definitivos. Cualquier cambio (diseño, texto o dato) 
 - Añadir zona nueva: poner su PNG (160 px de alto, fondo transparente) en `logos/` y añadirla al mapa `M` de `logoZ()` en las dos fuentes.
 - Auditoría final 23/11: 42 pantallas de logos + 41 generales + 14 de objetivos/agenda + funcionamiento + orientación + robustez (re-render, sin logos, modo oscuro, zoom 125/150 %): 0 fallos.
 - 23/11 13:16: ventas Nova Arcosur 26/95 y Valdecarros 42/52 (dato de Diego). Grupo 448 vendidas. Auditado.
+- 23/11 13:24: entrega Sexta Entrada dic 2031 (dato de Diego). Auditado.
