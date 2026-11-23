@@ -14,13 +14,14 @@ for r,(p,a,b) in M.items():
             s=s.replace(x,"    var nt=0; if(z.terceros){ rows+=filaT(z.terceros); nt=1; }\n    h+='<section style=\"flex:'+(z.promos.length+nt+1.3)+'\">")
     # PRUEBA 23/11: logo de la empresa junto al nombre de cada zona (color; con ?gris en la dirección, en gris)
     hz='horizontal' in r
-    LZ="function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',1],'Andalucía':['andalucia',1],'Colombia':['colombia',1]}, m=M[z]; return m?'<img class=\"zl\" alt=\"\" style=\"--k:'+m[1]+'\" src=\"logos/'+m[0]+'.png\">':''; }\nif(/[?&]gris/.test(location.search)) document.documentElement.className+=' gris';\nfunction render(d){"
+    LZ="function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',0.92],'Andalucía':['andalucia',1],'Colombia':['colombia',0.84]}, m=M[z]; return m?'<img class=\"zl\" alt=\"\" style=\"--k:'+m[1]+'\" src=\"logos/'+m[0]+'.png\">':''; }\nif(/[?&]gris/.test(location.search)) document.documentElement.className+=' gris';\nfunction render(d){"
     assert s.count('function render(d){')==1; s=s.replace('function render(d){',LZ)
-    x="<h2>'+esc(z.zona)+'<span>"; assert s.count(x)==1,r; s=s.replace(x,"<h2>'+esc(z.zona)+logoZ(z.zona)+'<span>")
-    x="<h2>Colombia<span>"; assert s.count(x)==1,r; s=s.replace(x,"<h2>Colombia'+logoZ('Colombia')+'<span>")
+    x="<h2>'+esc(z.zona)+'<span>"; assert s.count(x)==1,r; s=s.replace(x,"<h2><i class=\"zn\">'+esc(z.zona)+'</i>'+logoZ(z.zona)+'<span>")
+    x="<h2>Colombia<span>"; assert s.count(x)==1,r; s=s.replace(x,"<h2><i class=\"zn\">Colombia</i>'+logoZ('Colombia')+'<span>")
+    x="OTRA+'?auto'"; assert s.count(x)==1,r; s=s.replace(x,"OTRA+'?auto'+(/[?&]gris/.test(location.search)?'&gris':'')")
     U='calc(2.6 * var(--u) * var(--k))' if hz else 'calc(2.35vmin * var(--k))'
     G='calc(1 * var(--u))' if hz else '0.9vmin'
-    css='.zl { height:'+U+'; width:auto; flex:0 0 auto; align-self:center; margin:-0.5em auto -0.5em '+G+'; } html.gris .zl { filter: grayscale(1) opacity(.6); }\n@media (prefers-color-scheme: dark) { .zl, html.gris .zl { filter: brightness(0) invert(1) opacity(.8); } }\n@media (max-width:700px){ .zl { height: calc(2.6vmin * var(--k)); } }\n</style>'
+    css='.zn { font-style:normal; display:inline-block; min-width:6.5em; } .zl { height:'+U+'; width:auto; flex:0 0 auto; align-self:center; margin:-0.5em auto -0.5em '+G+'; } html.gris .zl { filter: grayscale(1) opacity(.6); }\n@media (prefers-color-scheme: dark) { .zl, html.gris .zl { filter: brightness(0) invert(1) opacity(.8); } }\n@media (max-width:700px){ .zl { height: calc(2.6vmin * var(--k)); } }\n</style>'
     assert s.count('</style>')==1; s=s.replace('</style>',css)
     open(p,'w').write(s)
 print('pruebas regeneradas')
