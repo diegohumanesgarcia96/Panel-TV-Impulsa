@@ -57,3 +57,6 @@ Los paneles se consideran definitivos. Cualquier cambio (diseño, texto o dato) 
 - Auditoría final 23/11: 42 pantallas de logos + 41 generales + 14 de objetivos/agenda + funcionamiento + orientación + robustez (re-render, sin logos, modo oscuro, zoom 125/150 %): 0 fallos.
 - 23/11 13:16: ventas Nova Arcosur 26/95 y Valdecarros 42/52 (dato de Diego). Grupo 448 vendidas. Auditado.
 - 23/11 13:24: entrega Sexta Entrada dic 2031 (dato de Diego). Auditado.
+
+## 23/11/2026 13:38 · Barra de ventas con las cifras dentro (solo en prueba)
+- Petición de Miguel: vendidas y restantes dentro de la barra, sin el número de la derecha. regen_prueba.py añade `barra()` y el CSS `.pb2` a las cuatro prueba*.html (ocupa las dos columnas, barra + número). Técnica: capa gris con texto oscuro y encima el relleno naranja recortado con el mismo texto en blanco; no usa JS de ajuste. Vendidas a la izquierda, disponibles a la derecha (no se pinta si es 0). La fila de terceros de Sevilla conserva su cifra a la derecha. Pendiente ok de Diego.

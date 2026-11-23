@@ -125,6 +125,13 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 /* logos de zona: todos arrancan en la misma vertical (.zn con ancho fijo) */
 .zn { font-style:normal; display:inline-block; min-width:6.5em; } .zl { height:calc(1.23em * var(--k)); width:auto; flex:0 0 auto; align-self:center; margin:-0.5em auto -0.5em 0.47em; }
 @media (prefers-color-scheme: dark) { .zl { filter: brightness(0) invert(1) opacity(.8); } }
+/* barra de ventas con cifras dentro: capa gris con texto oscuro y, encima, el relleno naranja recortado con el mismo texto en blanco */
+.pb2 { grid-column: span 2; position:relative; height:calc(2.5 * var(--u)); border-radius:99px; background: var(--line); overflow:hidden; font-size:calc(1.62 * var(--u)); font-weight:700; line-height:1; }
+.pb2 .bt { position:absolute; top:0; bottom:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:0 calc(1 * var(--u)); box-sizing:border-box; color: var(--fg); white-space:nowrap; }
+.pb2 .bt b:last-child { color: var(--grey); font-weight:600; }
+.pb2 i { position:absolute; top:0; bottom:0; left:0; width:calc(var(--p) * 1%); background: var(--car); overflow:hidden; font-style:normal; }
+.pb2 i .bt { width:calc(100% * 100 / var(--p)); color:#fff; } .pb2 i .bt b:last-child { color:#fff; }
+@media (max-width:700px){ .pb2 { height:4.4vmin; font-size:2.5vmin; } .pb2 .bt { padding:0 1.6vmin; } }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -158,8 +165,9 @@ var MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','di
 function entrega(p){ if(!p.entrega) return null; var a=String(p.entrega).split('-'), f=MESES[(+a[1]||1)-1]+'\u00a0'+a[0], r=+p.retraso_meses||0, late=r>0?' late':'';
   var et=r>0?('Retraso '+r+(r==1?' mes':' meses')):(p.entrega_nota?esc(p.entrega_nota):'');
   return { d:'<div class="pe'+late+'">'+(et?'<small>'+et+'</small>':'')+f+'</div>', m:'<span class="pem'+late+'"><i> · </i>'+(r>0?'<b>Retraso '+r+(r==1?' mes':' meses')+'</b> · '+f:(p.entrega_nota?esc(p.entrega_nota)+' ':'')+'<b>'+f+'</b>')+'</span>' }; }
+function barra(pct,s,v){ var p=Math.max(0,Math.min(100,Math.round(pct))), ns=+String(s).replace(/\./g,''), nv=+String(v).replace(/\./g,''), q=Math.max(0,nv-ns); var t='<div class="bt"><b>'+fmtN(ns)+'</b><b>'+(q>0?fmtN(q):'')+'</b></div>'; return '<div class="pb2" style="--p:'+p+'" title="'+fmtN(ns)+' vendidas · '+fmtN(q)+' disponibles">'+t+(p>0?'<i>'+t+'</i>':'')+'</div>'; }
 function fila(nombre,loc,fase,cls,pct,s,v,full,maps,ent){
-  return '<div class="pr"><div class="pn"><div class="pnt"><span class="pt">'+nomb(nombre)+'</span><span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
+  return '<div class="pr"><div class="pn"><div class="pnt"><span class="pt">'+nomb(nombre)+'</span><span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div>'+barra(pct,s,v)+'</div>';
 }
 function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',0.92],'Andalucía':['andalucia',1],'Colombia':['colombia',0.84]}, m=M[z]; return m?'<img class="zl" alt="" style="--k:'+m[1]+'" src="logos/'+m[0]+'.png">':''; } /* logo de la empresa junto al nombre de la zona (23/11/2026) */
 function filaT(t){ return '<div class="pr"><div class="pn"><div class="pnt"><span class="pt">'+nomb(t.nombre)+'</span><span class="pl">'+esc(t.localidad)+'</span></div></div><div class="pf">'+esc(t.fase||'Comercialización')+'</div><div></div><div class="pv">'+fmtN(t.viviendas)+'<span>\u00a0viv.</span></div></div>'; }
