@@ -14,7 +14,7 @@ for r,(p,a,b) in M.items():
             s=s.replace(x,"    var nt=0; if(z.terceros){ rows+=filaT(z.terceros); nt=1; }\n    h+='<section style=\"flex:'+(z.promos.length+nt+1.3)+'\">")
     # PRUEBA 23/11: logo de la empresa junto al nombre de cada zona (color; con ?gris en la dirección, en gris)
     hz='horizontal' in r
-    LZ="function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',1],'Andalucía':['andalucia',1],'Colombia':['colombia',0.4]}, m=M[z]; return m?'<img class=\"zl\" alt=\"\" style=\"--k:'+m[1]+'\" src=\"logos/'+m[0]+'.png\">':''; }\nif(/[?&]gris/.test(location.search)) document.documentElement.className+=' gris';\nfunction render(d){"
+    LZ="function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',1],'Andalucía':['andalucia',1],'Colombia':['colombia',1]}, m=M[z]; return m?'<img class=\"zl\" alt=\"\" style=\"--k:'+m[1]+'\" src=\"logos/'+m[0]+'.png\">':''; }\nif(/[?&]gris/.test(location.search)) document.documentElement.className+=' gris';\nfunction render(d){"
     assert s.count('function render(d){')==1; s=s.replace('function render(d){',LZ)
     x="<h2>'+esc(z.zona)+'<span>"; assert s.count(x)==1,r; s=s.replace(x,"<h2>'+esc(z.zona)+logoZ(z.zona)+'<span>")
     x="<h2>Colombia<span>"; assert s.count(x)==1,r; s=s.replace(x,"<h2>Colombia'+logoZ('Colombia')+'<span>")

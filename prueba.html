@@ -150,7 +150,7 @@ function entrega(p){ if(!p.entrega) return null; var a=String(p.entrega).split('
 function fila(nombre,loc,fase,cls,pct,s,v,full,maps,ent){
   return '<div class="pr"><div class="pn"><div class="pnt">'+nomb(nombre)+'<span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
 }
-function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',1],'Andalucía':['andalucia',1],'Colombia':['colombia',0.4]}, m=M[z]; return m?'<img class="zl" alt="" style="--k:'+m[1]+'" src="logos/'+m[0]+'.png">':''; }
+function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',1],'Andalucía':['andalucia',1],'Colombia':['colombia',1]}, m=M[z]; return m?'<img class="zl" alt="" style="--k:'+m[1]+'" src="logos/'+m[0]+'.png">':''; }
 if(/[?&]gris/.test(location.search)) document.documentElement.className+=' gris';
 function render(d){
   var viv=0,vend=0,obra=0,nprom=0,h="";
