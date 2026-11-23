@@ -40,3 +40,4 @@ Cada promoción puede llevar en datos.json los campos `maps` (URL de Google Maps
 - `var SOLO_OBJ` en index.html y horizontal.html: `false` = objetivos + hitos (definitivo actual); `true` = solo objetivos semanales (vertical a 2 columnas, horizontal a toda la columna). regen_prueba.py lo pone a `true` en prueba.html y prueba-horizontal.html. Pasar a definitivo = cambiar a `true` en las dos fuentes, tras ok y auditoría.
 - Entrega Catedral · Nova Arcosur: abr 2029 (planificación v4 de 18/11/2026).
 - 23/11 11:25: Diego aclara que quería el título "Objetivos" (no quitar hitos). Título cambiado en definitivos; SOLO_OBJ queda en false en todas las páginas (regen_prueba ya no lo activa).
+- 23/11 11:47: el bloque "Próximos hitos" pasa a llamarse "Agenda" (Madrid).

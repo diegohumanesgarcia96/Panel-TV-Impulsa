@@ -5,7 +5,7 @@ Uso: python3 build.py   → escribe general.html y general-horizontal.html"""
 import re
 # ---------- vertical general ----------
 v=open('index.html').read()
-_o='<div class="bajo"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div>\n'; assert _o in v; v=v.replace(_o,'')
+_o='<div class="bajo"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Agenda</h2><div id="hitos"></div></div></div>\n'; assert _o in v; v=v.replace(_o,'')
 v=v.replace("document.getElementById('hitos').innerHTML=","var _h=document.getElementById('hitos'); if(_h) _h.innerHTML=")
 v=v.replace('<meta name="claude:viewport-fit-sides" content="cover">','<meta name="claude:viewport-fit-sides" content="cover"><!-- versión general: sin hitos -->')
 # sin hitos sobra altura: secciones proporcionales al nº de filas, filas repartidas y tipografía algo mayor
@@ -26,7 +26,7 @@ _r="OTRA='horizontal.html'"; assert _r in v; v=v.replace(_r,"OTRA='general-horiz
 open('general.html','w').write(v)
 # ---------- horizontal general: 3 columnas de zonas ----------
 h=open('horizontal.html').read()
-h=h.replace('<div class="main"><div class="col" id="colA"></div><div class="col" id="colB"></div>\n<div class="lat"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Próximos hitos</h2><div id="hitos"></div></div></div></div>',
+h=h.replace('<div class="main"><div class="col" id="colA"></div><div class="col" id="colB"></div>\n<div class="lat"><div class="hitos obj"><h2>Objetivos</h2><div id="objs"></div></div><div class="hitos"><h2>Agenda</h2><div id="hitos"></div></div></div></div>',
             '<div class="main"><div class="col" id="colA"></div><div class="col" id="colB"></div><div class="col" id="colC"></div></div>')
 h=h.replace("grid-template-columns: 1fr 1fr 0.55fr;","grid-template-columns: 1fr 1fr 1fr;")
 # nombres a 2 líneas (columnas más estrechas, pero hay altura de sobra)
