@@ -42,3 +42,6 @@ Cada promoción puede llevar en datos.json los campos `maps` (URL de Google Maps
 - 23/11 11:25: Diego aclara que quería el título "Objetivos" (no quitar hitos). Título cambiado en definitivos; SOLO_OBJ queda en false en todas las páginas (regen_prueba ya no lo activa).
 - 23/11 11:47: el bloque "Próximos hitos" pasa a llamarse "Agenda" (Madrid).
 - 23/11 11:48: se quita la palabra "Entrega"; queda solo la fecha en naranja (Danubio conserva "T1" porque la fecha es solo de la Torre 1). Cuatro paneles.
+
+## REGLA (Diego, 23/11/2026 11:53): auditoría con cada cambio
+Los paneles se consideran definitivos. Cualquier cambio (diseño, texto o dato) va seguido de auditoría antes de darlo por hecho: audE.js (41 pantallas, recortes/solapes/encaje), ob3.js (objetivos y agenda, ≥4 hitos), fun.js (cifras, enlaces, sin datos, 1-dic, naranja), ori4.js (vertical/horizontal) y captura visual revisada. Se informa a Diego del resultado y de los fallos corregidos.
