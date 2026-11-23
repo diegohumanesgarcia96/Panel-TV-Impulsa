@@ -143,8 +143,8 @@ function nomb(n){ return esc(n).split(' · ').map(function(x){return '<span clas
 /* 23/11/2026: fecha de entrega prevista y aviso de retraso por promoción (campos entrega 'AAAA-MM', retraso_meses y entrega_nota en datos.json) */
 var MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 function entrega(p){ if(!p.entrega) return null; var a=String(p.entrega).split('-'), f=MESES[(+a[1]||1)-1]+'\u00a0'+a[0], r=+p.retraso_meses||0, late=r>0?' late':'';
-  var et=r>0?('Retraso '+r+(r==1?' mes':' meses')):('Entrega'+(p.entrega_nota?' '+esc(p.entrega_nota):''));
-  return { d:'<div class="pe'+late+'"><small>'+et+'</small>'+f+'</div>', m:'<span class="pem'+late+'"><i> · </i>'+(r>0?'<b>Retraso '+r+(r==1?' mes':' meses')+'</b> · '+f:'Entrega'+(p.entrega_nota?' '+esc(p.entrega_nota):'')+' <b>'+f+'</b>')+'</span>' }; }
+  var et=r>0?('Retraso '+r+(r==1?' mes':' meses')):(p.entrega_nota?esc(p.entrega_nota):'');
+  return { d:'<div class="pe'+late+'">'+(et?'<small>'+et+'</small>':'')+f+'</div>', m:'<span class="pem'+late+'"><i> · </i>'+(r>0?'<b>Retraso '+r+(r==1?' mes':' meses')+'</b> · '+f:(p.entrega_nota?esc(p.entrega_nota)+' ':'')+'<b>'+f+'</b>')+'</span>' }; }
 function fila(nombre,loc,fase,cls,pct,s,v,full,maps,ent){
   return '<div class="pr"><div class="pn"><div class="pnt">'+nomb(nombre)+'<span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div><div class="pb"><i style="width:'+Math.max(0,Math.min(100,Math.round(pct)))+'%"></i></div><div class="pv">'+s+'<span>/'+v+'</span></div></div>';
 }

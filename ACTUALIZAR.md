@@ -41,3 +41,4 @@ Cada promoción puede llevar en datos.json los campos `maps` (URL de Google Maps
 - Entrega Catedral · Nova Arcosur: abr 2029 (planificación v4 de 18/11/2026).
 - 23/11 11:25: Diego aclara que quería el título "Objetivos" (no quitar hitos). Título cambiado en definitivos; SOLO_OBJ queda en false en todas las páginas (regen_prueba ya no lo activa).
 - 23/11 11:47: el bloque "Próximos hitos" pasa a llamarse "Agenda" (Madrid).
+- 23/11 11:48: se quita la palabra "Entrega"; queda solo la fecha en naranja (Danubio conserva "T1" porque la fecha es solo de la Torre 1). Cuatro paneles.
