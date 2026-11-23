@@ -129,7 +129,8 @@
      "obra": false,
      "espera": false,
      "maps": "https://www.google.com/maps/search/?api=1&query=41.6247141%2C-0.9584084",
-     "maps_precision": "calle"
+     "maps_precision": "calle",
+     "entrega": "2029-04"
     },
     {
      "nombre": "Arcosur E-38",

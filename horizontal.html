@@ -116,6 +116,7 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 .ob b { display:block; font-size: calc(1.62 * var(--u)); font-weight:600; line-height:1.2; }
 .ob span { display:block; font-size: calc(1.35 * var(--u)); color: var(--grey); line-height:1.25; text-wrap:balance; }
 .ob em { font-style:normal; font-size: calc(1.35 * var(--u)); font-weight:600; color: var(--car); white-space:nowrap; }
+.lat.so .hitos.obj { flex:1 1 0; display:flex; flex-direction:column; min-height:0; } .lat.so #objs { flex:1; justify-content:space-evenly; } .lat.so .ob b { font-size: calc(1.95 * var(--u)); } .lat.so .ob span, .lat.so .ob em { font-size: calc(1.6 * var(--u)); }
 .lat.cmp .ob { padding: calc(0.3 * var(--u)) 0; } .lat.cmp .hi { padding: calc(0.25 * var(--u)) 0; } .lat.cmp .hitos h2 { margin-bottom: calc(0.2 * var(--u)); } .lat.cmp .hitos { padding-top: calc(0.7 * var(--u)); padding-bottom: calc(0.7 * var(--u)); } .lat.cmp .ht span { display:none; }
 .lat #hitos { overflow:hidden; } .lat .ht { font-size: calc(1.62 * var(--u)); } .lat .hd { font-size: calc(1.9 * var(--u)); } .lat .hi { grid-template-columns: calc(8.6 * var(--u)) 1fr; padding: calc(0.5 * var(--u)) 0; }
 
@@ -177,10 +178,12 @@ function render(d){
   var u=document.getElementById('upd'); if(u) u.textContent=fmt(d.actualizado);
   renderHitos(d);
 }
+var SOLO_OBJ=false; /* true = solo objetivos, sin próximos hitos */
 function renderObjs(d){ var el=document.getElementById('objs'); if(!el) return false; var L=(d.objetivos&&d.objetivos.lista)||[]; if(!L.length){ el.parentNode.style.display='none'; el.parentNode.parentNode.className+=' solo'; return false; }
   var MM=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
   el.innerHTML=L.map(function(o){ var f=''; if(o.fecha){ var a=String(o.fecha).split('-'); f=a.length>2?(+a[2])+' '+MM[+a[1]-1]:MM[+a[1]-1]+' '+a[0]; }
     return '<div class="ob"><div><b>'+esc(o.ambito)+'</b><span>'+esc(o.texto)+'</span></div>'+(f?'<em>'+f+'</em>':'')+'</div>'; }).join('');
+  if(SOLO_OBJ){ var c=el.parentNode.parentNode, hh=document.getElementById('hitos'); if(hh) hh.parentNode.style.display='none'; c.className+=' so'; }
   return true; }
 function renderHitos(d){
   var conObjs=renderObjs(d);
