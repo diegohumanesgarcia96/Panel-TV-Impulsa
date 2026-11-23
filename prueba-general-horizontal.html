@@ -2,7 +2,7 @@
 <script>/* auto-orientacion 20/11/2026: el enlace compartido (versión horizontal) abre la vertical en teléfonos y pantallas verticales, y vuelve a la horizontal si la pantalla es apaisada */
 (function(){ var ESTA='h', OTRA='prueba-general.html'; /* enlace compartido: siempre elige versión según la pantalla */
   function quiere(){ var w=window.innerWidth, h=window.innerHeight; if (!w||!h) return ESTA; var movil=Math.min(w,h)<=700; return (movil||h>=w)?'v':'h'; }
-  function mira(){ if (quiere()!==ESTA) location.replace(OTRA+'?auto'+(/[?&]quedan/.test(location.search)?'&quedan':'')); }
+  function mira(){ if (quiere()!==ESTA) location.replace(OTRA+'?auto'); }
   mira(); var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(mira,400); });
 })();</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Panel Grupo Impulsa</title>
@@ -162,9 +162,9 @@ var MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','di
 function entrega(p){ if(!p.entrega) return null; var a=String(p.entrega).split('-'), f=MESES[(+a[1]||1)-1]+'\u00a0'+a[0], r=+p.retraso_meses||0, late=r>0?' late':'';
   var et=r>0?('Retraso '+r+(r==1?' mes':' meses')):(p.entrega_nota?esc(p.entrega_nota):'');
   return { d:'<div class="pe'+late+'">'+(et?'<small>'+et+'</small>':'')+f+'</div>', m:'<span class="pem'+late+'"><i> · </i>'+(r>0?'<b>Retraso '+r+(r==1?' mes':' meses')+'</b> · '+f:(p.entrega_nota?esc(p.entrega_nota)+' ':'')+'<b>'+f+'</b>')+'</span>' }; }
-var QUEDAN=/[?&]quedan/.test(location.search);
-function barra(pct,s,v){ var ns=+String(s).replace(/\./g,''), nv=+String(v).replace(/\./g,''), q=Math.max(0,nv-ns), p=nv>0?Math.max(0,Math.min(100,ns/nv*100)):0, d=QUEDAN?(q>0?fmtN(q):''):fmtN(nv);
-  return '<div class="pb2" data-p="'+p+'" title="'+fmtN(ns)+' vendidas de '+fmtN(nv)+' · '+fmtN(q)+' disponibles"><i style="width:'+p+'%"></i><b class="a">'+fmtN(ns)+'</b><b class="q">'+d+'</b></div>'; }
+/* barra de ventas con las cifras dentro (23/11/2026): vendidas a la izquierda, las que quedan a la derecha; cada cifra va entera de un color */
+function barra(pct,s,v){ var ns=+String(s).replace(/\./g,''), nv=+String(v).replace(/\./g,''), q=Math.max(0,nv-ns), p=nv>0?Math.max(0,Math.min(100,ns/nv*100)):0;
+  return '<div class="pb2" data-p="'+p+'" title="'+fmtN(ns)+' vendidas de '+fmtN(nv)+' · '+fmtN(q)+' disponibles"><i style="width:'+p+'%"></i><b class="a">'+fmtN(ns)+'</b><b class="q">'+(q>0?fmtN(q):'')+'</b></div>'; }
 function ajustaBarras(){ var L=document.querySelectorAll('.pb2'); for(var k=0;k<L.length;k++){ var x=L[k], W=x.clientWidth; if(!W) continue; var a=x.querySelector('.a'), q=x.querySelector('.q'); a.style.left=''; q.style.right=''; a.className='a'; q.className='q';
     var pad=parseFloat(getComputedStyle(a).left)||0, f=W*(+x.getAttribute('data-p'))/100, wa=a.offsetWidth, wq=q.textContent?q.offsetWidth:0;
     if(f>=pad+wa+pad*0.5){ a.className='a in'; } else { a.style.left=Math.max(pad,f+pad*0.6)+'px'; }
