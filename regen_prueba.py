@@ -14,8 +14,8 @@ for r,(p,a,b) in M.items():
             s=s.replace(x,"    var nt=0; if(z.terceros){ rows+=filaT(z.terceros); nt=1; }\n    h+='<section style=\"flex:'+(z.promos.length+nt+1.3)+'\">")
     # 25/11/2026 (prueba): total de viviendas de cada promoción junto a la localidad
     x="esc(loc))+(ent?ent.m:'')"; assert s.count(x)==1,r
-    s=s.replace(x,"esc(loc))+'<i class=\"tv\"> · '+(typeof v=='number'?fmtN(v):v)+' viv.</i>'+(ent?ent.m:'')")
-    assert s.count('</style>')==1; s=s.replace('</style>','.pl .tv{font-style:normal;white-space:nowrap}\n</style>')
+    s=s.replace(x,"esc(loc))+'<i class=\"tv\"> · <b>'+(typeof v=='number'?fmtN(v):v)+' viv.</b></i>'+(ent?ent.m:'')")
+    assert s.count('</style>')==1; s=s.replace('</style>','.pl .tv{font-style:normal;white-space:nowrap} .pl .tv b{font-weight:600;color:var(--fg)}\n</style>')
     if 'horizontal' in r:   # una sola línea para la localidad: si no cabe, se reduce la letra (nunca se corta ni salta de línea)
         s=s.replace('</style>','.pn .pl{white-space:nowrap;text-wrap:nowrap;overflow:hidden}\n</style>')
         x="var _rdB=render;"; assert s.count(x)==1,r

@@ -132,7 +132,7 @@ footer { margin-top:auto; gap:calc(2 * var(--u)); white-space:nowrap; border-top
 .pb2 .a { left:calc(1 * var(--u)); } .pb2 .q { right:calc(1 * var(--u)); color: var(--grey); font-weight:600; }
 .pb2 b.in { color:#fff; }
 @media (max-width:700px){ .pb2 { height:4.4vmin; font-size:2.5vmin; } .pb2 .a { left:1.6vmin; } .pb2 .q { right:1.6vmin; } }
-.pl .tv{font-style:normal;white-space:nowrap}
+.pl .tv{font-style:normal;white-space:nowrap} .pl .tv b{font-weight:600;color:var(--fg)}
 .pn .pl{white-space:nowrap;text-wrap:nowrap;overflow:hidden}
 </style></head><body>
 <div class="wrap">
@@ -179,7 +179,7 @@ var _rdL=render; render=function(d){ _rdL(d); ajustaLoc(); if(document.fonts&&do
 var _rdB=render; render=function(d){ _rdB(d); ajustaBarras(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaBarras); };
 window.addEventListener('resize',function(){ setTimeout(ajustaBarras,60); });
 function fila(nombre,loc,fase,cls,pct,s,v,full,maps,ent){
-  return '<div class="pr"><div class="pn"><div class="pnt"><span class="pt">'+nomb(nombre)+'</span><span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+'<i class="tv"> · '+(typeof v=='number'?fmtN(v):v)+' viv.</i>'+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div>'+barra(pct,s,v)+'</div>';
+  return '<div class="pr"><div class="pn"><div class="pnt"><span class="pt">'+nomb(nombre)+'</span><span class="pl">'+(maps?'<a class="mp" href="'+esc(maps)+'" target="_blank" rel="noopener">'+PIN+esc(loc)+'</a>':esc(loc))+'<i class="tv"> · <b>'+(typeof v=='number'?fmtN(v):v)+' viv.</b></i>'+(ent?ent.m:'')+'</span></div>'+(ent?ent.d:'')+'</div><div class="pf '+cls+'"'+obraFill(fase,cls)+'>'+esc(fase)+'</div>'+barra(pct,s,v)+'</div>';
 }
 function logoZ(z){ var M={'Madrid':['madrid',1],'Aragón':['aragon',1],'Cataluña':['cataluna',0.92],'Andalucía':['andalucia',1],'Colombia':['colombia',0.84]}, m=M[z]; return m?'<img class="zl" alt="" style="--k:'+m[1]+'" src="logos/'+m[0]+'.png">':''; } /* logo de la empresa junto al nombre de la zona (23/11/2026) */
 function filaT(t){ return '<div class="pr"><div class="pn"><div class="pnt"><span class="pt">'+nomb(t.nombre)+'</span><span class="pl">'+esc(t.localidad)+'</span></div></div><div class="pf">'+esc(t.fase||'Comercialización')+'</div><div></div><div class="pv">'+fmtN(t.viviendas)+'<span>\u00a0viv.</span></div></div>'; }

@@ -69,3 +69,4 @@ Los paneles se consideran definitivos. Cualquier cambio (diseño, texto o dato) 
 
 ## 25/11/2026 12:07 · Total de viviendas por promoción (solo en prueba)
 - Petición de Diego: que se vea el total de viviendas de cada promoción. regen_prueba.py añade «· N viv.» tras la localidad en las cuatro prueba*.html (`.tv`). En las horizontales la línea de localidad va en una sola línea y `ajustaLoc()` reduce la letra (hasta el 78 %) si no cabe; sin esto, «Cerdanyola del Vallès · 125 viv.» saltaba a dos líneas y la columna de Cataluña se salía por abajo. Auditado: 20 pantallas horizontales + 41 generales + barras + cambio de tamaño. Pendiente ok de Diego.
+- 25/11 12:25: Diego no localizaba el total (iba en gris, igual que la localidad) → el total va ahora en negrita y color oscuro («· **77 viv.**»). Auditado de nuevo, 0 fallos. Sigue solo en prueba.
