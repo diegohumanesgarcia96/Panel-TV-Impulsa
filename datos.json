@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-23",
+ "actualizado": "2026-11-25",
  "zonas": [
   {
    "zona": "Madrid",
@@ -75,7 +75,7 @@
     {
      "nombre": "Cerasus Ahijones",
      "localidad": "Madrid · Los Ahijones",
-     "viviendas": 64,
+     "viviendas": 77,
      "vendidas": 63,
      "fase": "Comercialización",
      "cls": "",
