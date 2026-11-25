@@ -74,3 +74,9 @@ Los paneles se consideran definitivos. Cualquier cambio (diseño, texto o dato) 
 ## 25/11/2026 12:34 · Total de viviendas por promoción — DEFINITIVO
 - Ok de Diego. En las fuentes index.html y horizontal.html (y generales por build.py): `fila()` añade tras la localidad `<i class="tv"> · <b>N viv.</b></i>` (negrita, color `--fg`). En horizontal.html la localidad va en una sola línea (`.pn .pl` nowrap) y `ajustaLoc()` reduce la letra hasta el 78 % si no cabe (tras cada render, al cargar fuentes y al redimensionar). regen_prueba.py ya no añade nada de esto: las prueba*.html vuelven a ser definitivas + fila de terceros de Sevilla.
 - Auditoría: 20 pantallas horizontales (1024 a 4K) sin cortes ni desbordes, 7 verticales/móvil/tablet, funcionamiento, barras, 41 generales, objetivos/agenda, cambio de tamaño, robustez, logos y orientación: 0 fallos. (so.js es una prueba obsoleta del experimento «solo objetivos»; falla igual antes y después.)
+
+## 25/11/2026 15:00 · Acta de coordinadores 25/11 (borrador de Virginia, cifras confirmadas por Diego)
+- Ventas: Catedral 27/95, Valdecarros 41/52, Cerasus Ahijones 64/77. Grupo 449 vendidas (343 ESP + 106 COL).
+- Objetivos (7): entra «Brunete Lote 3 · nuevo anteproyecto con ampliación de viviendas»; fuente Acta 25/11.
+- Hitos nuevos: 26/11 visita CFO RU1, 27/11 Avintia, 30/11 CBRE financiación AyD, 1/12 Heraldo, 31/12 licencia Brunete, 14/01/27 reserva nombre Sakura Ahijones.
+- horizontal.html: con 7 objetivos la agenda se salía por abajo (cortaba «Hecho esta semana»). `ajustaLat()` ahora, si tras compactar sigue sin caber, quita la línea «Hecho esta semana» y después baja hasta 3 hitos. Auditado: funcionamiento, barras, generales, objetivos/agenda en 14 tamaños, cambio de tamaño, robustez, logos y orientación: 0 fallos.

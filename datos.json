@@ -76,7 +76,7 @@
      "nombre": "Cerasus Ahijones",
      "localidad": "Madrid · Los Ahijones",
      "viviendas": 77,
-     "vendidas": 63,
+     "vendidas": 64,
      "fase": "Comercialización",
      "cls": "",
      "obra": false,
@@ -90,7 +90,7 @@
      "nombre": "Valdecarros · Vescoop",
      "localidad": "Madrid · Valdecarros",
      "viviendas": 52,
-     "vendidas": 42,
+     "vendidas": 41,
      "fase": "Comercialización",
      "cls": "",
      "obra": false,
@@ -123,7 +123,7 @@
      "nombre": "Catedral · Impulsa Nova Arcosur",
      "localidad": "Zaragoza · Arcosur",
      "viviendas": 95,
-     "vendidas": 26,
+     "vendidas": 27,
      "fase": "Licencia",
      "cls": "warn",
      "obra": false,
@@ -420,11 +420,35 @@
    "tipo": "Obra"
   },
   {
+   "fecha": "2026-11-26",
+   "hito": "Visita para decidir la emisión del CFO de Rivas RU1",
+   "ambito": "Rivas RU1",
+   "tipo": "Obra"
+  },
+  {
+   "fecha": "2026-11-27",
+   "hito": "Reunión con Avintia para revisar la liquidación de Rivas RU1",
+   "ambito": "Rivas RU1",
+   "tipo": "Obra"
+  },
+  {
    "fecha": "2026-11-30",
    "hito": "Pago a Azora del 2º 20 % de Valdecarros (tras aprobar Akela el PBC)",
    "ambito": "Valdecarros",
    "tipo": "Financiación",
    "objetivo": true
+  },
+  {
+   "fecha": "2026-11-30",
+   "hito": "Reunión con CBRE sobre la financiación de AyD (Riverbank e Ibercaja)",
+   "ambito": "Grupo",
+   "tipo": "Financiación"
+  },
+  {
+   "fecha": "2026-12-01",
+   "hito": "Reportaje en Heraldo de Aragón sobre Catedral · Nova Arcosur",
+   "ambito": "Zaragoza",
+   "tipo": "Comercial"
   },
   {
    "fecha": "2026-12-14",
@@ -445,10 +469,22 @@
    "tipo": "Jurídico"
   },
   {
+   "fecha": "2026-12-31",
+   "hito": "Solicitud de licencia de Brunete Lote 3 (límite fin de año)",
+   "ambito": "Brunete Lote 3",
+   "tipo": "Urbanismo"
+  },
+  {
    "fecha": "2027-01-13",
    "hito": "Calificación provisional Brunete Lote 3",
    "ambito": "Brunete Lote 3",
    "tipo": "Urbanismo"
+  },
+  {
+   "fecha": "2027-01-14",
+   "hito": "Vence la reserva del nombre Sakura Ahijones, S.Coop.Mad.",
+   "ambito": "Ahijones",
+   "tipo": "Cooperativa"
   },
   {
    "fecha": "2027-01-31",
@@ -495,33 +531,37 @@
   }
  ],
  "objetivos": {
-  "fuente": "Acta de coordinadores 19/11/2026",
+  "fuente": "Acta de coordinadores 25/11/2026",
   "lista": [
    {
-    "ambito": "Valdecarros",
-    "texto": "Pagar el 20 % a vendedores + PBC",
-    "fecha": "2026-11-30"
-   },
-   {
-    "ambito": "Canal 65",
-    "texto": "Reservas + financiación + convenio con Metro"
+    "ambito": "Brunete Lote 3",
+    "texto": "Concurso: nuevo anteproyecto con ampliación de viviendas"
    },
    {
     "ambito": "Los Montecillos",
     "texto": "Financiación + obra nueva + compraventas + mejoras"
    },
    {
+    "ambito": "Valdecarros",
+    "texto": "Pagar el 20 % a vendedores + PBC",
+    "fecha": "2026-11-30"
+   },
+   {
     "ambito": "Los Molinos II",
     "texto": "Licencia + financiación"
    },
    {
-    "ambito": "Zaragoza · E-38",
-    "texto": "Constitución de la cooperativa"
+    "ambito": "Canal 65",
+    "texto": "Reservas + financiación + convenio con Metro"
    },
    {
     "ambito": "Rivas RU1",
     "texto": "Entrega de viviendas",
     "fecha": "2027-01"
+   },
+   {
+    "ambito": "Zaragoza · E-38",
+    "texto": "Constitución de la cooperativa"
    }
   ]
  }
