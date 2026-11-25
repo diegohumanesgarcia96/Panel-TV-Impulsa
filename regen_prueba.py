@@ -12,5 +12,13 @@ for r,(p,a,b) in M.items():
         else:
             x="    h+='<section style=\"flex:'+(z.promos.length+1.3)+'\">"; assert s.count(x)==1
             s=s.replace(x,"    var nt=0; if(z.terceros){ rows+=filaT(z.terceros); nt=1; }\n    h+='<section style=\"flex:'+(z.promos.length+nt+1.3)+'\">")
+    # 25/11/2026 (prueba): total de viviendas de cada promoción junto a la localidad
+    x="esc(loc))+(ent?ent.m:'')"; assert s.count(x)==1,r
+    s=s.replace(x,"esc(loc))+'<i class=\"tv\"> · '+(typeof v=='number'?fmtN(v):v)+' viv.</i>'+(ent?ent.m:'')")
+    assert s.count('</style>')==1; s=s.replace('</style>','.pl .tv{font-style:normal;white-space:nowrap}\n</style>')
+    if 'horizontal' in r:   # una sola línea para la localidad: si no cabe, se reduce la letra (nunca se corta ni salta de línea)
+        s=s.replace('</style>','.pn .pl{white-space:nowrap;text-wrap:nowrap;overflow:hidden}\n</style>')
+        x="var _rdB=render;"; assert s.count(x)==1,r
+        s=s.replace(x,"function ajustaLoc(){ var L=document.querySelectorAll('.pn .pl'); for(var i=0;i<L.length;i++){ var e=L[i], k=1; e.style.fontSize=''; if(!e.clientWidth) continue; while(e.scrollWidth>e.clientWidth+0.5&&k>0.78){ k-=0.02; e.style.fontSize='calc(1.35 * var(--u) * '+k.toFixed(2)+')'; } } }\nvar _rdL=render; render=function(d){ _rdL(d); ajustaLoc(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaLoc); }; window.addEventListener('resize',ajustaLoc);\n"+x)
     open(p,'w').write(s)
 print('pruebas regeneradas')
