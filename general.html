@@ -125,6 +125,7 @@ footer { margin-top:auto; gap:1.95vmin; white-space:nowrap; border-top: 1px soli
 @media (max-width:700px){ .pb2 { height:4.4vmin; font-size:2.5vmin; } .pb2 .a { left:1.6vmin; } .pb2 .q { right:1.6vmin; } }
 /* 25/11/2026: total de viviendas de cada promoción junto a la localidad, destacado */
 .pl .tv{font-style:normal;white-space:nowrap} .pl .tv b{font-weight:600;color:var(--fg)}
+body.cmpv .ob { padding-top: 0.06vmin; padding-bottom: 0.06vmin; }
 </style></head><body>
 <div class="wrap">
 <header><div><h1>Grupo Impulsa · estado del grupo</h1><div class="sub">Promociones en curso en España y Colombia</div></div>
@@ -208,7 +209,7 @@ function renderHitos(d){
   ajustaHitos(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(ajustaHitos);
 }
 /* 23/11/2026: si al crecer la lista de promociones el panel no cabe en la tele, se quitan los hitos más lejanos (mínimo 3) hasta que quepa. En móvil no actúa. */
-function ajustaHitos(){ if(window.innerWidth<=700) return; var hs=document.querySelectorAll('#hitos .hi'), i=hs.length-1; while(i>=4 && document.documentElement.scrollHeight>window.innerHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } }
+function ajustaHitos(){ if(window.innerWidth<=700) return; var hs=document.querySelectorAll('#hitos .hi'), i=hs.length-1; while(i>=4 && document.documentElement.scrollHeight>window.innerHeight+1){ hs[i].parentNode.removeChild(hs[i]); i--; } if(document.documentElement.scrollHeight>window.innerHeight+1 && !/\bcmpv\b/.test(document.body.className)){ document.body.className+=' cmpv'; } }
 function horaEn(tz,d){ try{ return new Intl.DateTimeFormat('es-ES',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(d); }catch(e){ return p2(d.getHours())+':'+p2(d.getMinutes()); } }
 function reloj(){ var d=new Date(); document.getElementById('hora').textContent=horaEn('Europe/Madrid',d); document.getElementById('hora-co').textContent=horaEn('America/Bogota',d);
   document.getElementById('fecha').textContent=DIA[d.getDay()]+' '+d.getDate()+' '+MES[d.getMonth()]+' '+d.getFullYear();

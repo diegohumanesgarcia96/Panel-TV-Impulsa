@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-25",
+ "actualizado": "2026-11-26",
  "zonas": [
   {
    "zona": "Madrid",
@@ -548,7 +548,7 @@
    },
    {
     "ambito": "Los Molinos II",
-    "texto": "Licencia + financiación"
+    "texto": "Licencia + financiación + contrato CEOS"
    },
    {
     "ambito": "Canal 65",
@@ -562,6 +562,10 @@
    {
     "ambito": "Zaragoza · E-38",
     "texto": "Constitución de la cooperativa"
+   },
+   {
+    "ambito": "Getafe NB43",
+    "texto": "Compra de 1 garaje + obras para la primera ocupación"
    }
   ]
  }
